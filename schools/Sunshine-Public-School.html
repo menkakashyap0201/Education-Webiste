@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunshine Public School — Panipat, Haryana</title>
+  <style>
+    :root{
+      --navy:#0b2e37;
+      --navy-deep:#071e24;
+      --teal:#164e59;
+      --teal-light:#2f8f89;
+      --teal-pale:#e4f0ee;
+      --cream:#f7f5ef;
+      --ink:#1c2726;
+      --ink-soft:#54615e;
+      --line:#dce4e1;
+      --radius:6px;
+      font-size:16px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:var(--cream);
+      line-height:1.6;
+    }
+    h1,h2,h3,.display{
+      font-family:Georgia,'Iowan Old Style','Times New Roman',serif;
+      font-weight:600;
+      letter-spacing:.2px;
+      color:var(--navy-deep);
+    }
+    img{max-width:100%;display:block;width:100%;height:100%;object-fit:cover;}
+    a{color:inherit;text-decoration:none;}
+    ul{list-style:none;}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:13px 26px;border-radius:var(--radius);
+      font-size:.95rem;font-weight:600;cursor:pointer;border:1.5px solid transparent;
+      transition:transform .15s ease, background .2s ease, color .2s ease;
+    }
+    .btn:hover{transform:translateY(-2px);}
+    .btn-light{background:#fff;color:var(--navy-deep);}
+    .btn-light:hover{background:var(--teal-pale);}
+    .btn-outline{border-color:rgba(255,255,255,.55);color:#fff;}
+    .btn-outline:hover{background:rgba(255,255,255,.12);}
+    .btn-navy{background:var(--navy);color:#fff;}
+    .btn-navy:hover{background:var(--navy-deep);}
+
+    .eyebrow{
+      display:inline-block;font-size:.78rem;font-weight:700;color:var(--teal);
+      background:var(--teal-pale);padding:5px 14px;border-radius:20px;margin-bottom:16px;
+    }
+
+    .photo{border-radius:8px;overflow:hidden;position:relative;background:var(--teal);}
+    .photo.square-0{border-radius:0;}
+
+    /* ---------- HEADER ---------- */
+    header{
+      position:sticky;top:0;z-index:50;background:rgba(7,30,36,.95);backdrop-filter:blur(6px);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+    .logo{display:flex;align-items:center;gap:10px;color:#fff;}
+    .logo-mark{
+      width:38px;height:38px;border-radius:50%;background:#fff;
+      display:flex;align-items:center;justify-content:center;color:var(--navy-deep);font-weight:700;font-family:Georgia,serif;
+    }
+    .logo strong{display:block;font-family:Georgia,serif;font-size:1.05rem;letter-spacing:.3px;}
+    .logo small{display:block;font-size:.68rem;color:var(--teal-light);letter-spacing:1.5px;}
+    .nav-links{display:flex;gap:34px;}
+    .nav-links a{color:#e4ede9;font-size:.92rem;transition:color .2s;}
+    .nav-links a:hover{color:var(--teal-light);}
+    .nav-cta{display:flex;align-items:center;gap:18px;}
+    .lang{color:#e4ede9;font-size:.85rem;border:1px solid rgba(255,255,255,.3);padding:6px 14px;border-radius:20px;}
+
+    /* ---------- HERO ---------- */
+    .hero{position:relative;background:var(--navy-deep);color:#fff;}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:70px 0 90px;}
+    .hero h1{font-size:clamp(2.1rem,4vw,3.15rem);color:#fff;line-height:1.15;margin-bottom:20px;}
+    .hero p{color:#c3d3d0;max-width:46ch;margin-bottom:32px;font-size:1.02rem;}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+    .hero-img{aspect-ratio:3/3;}
+
+    .stat-row{margin-top:-56px;position:relative;z-index:2;}
+    .stat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+    .stat-card{
+      background:var(--teal);border-radius:10px;padding:26px 22px;color:#fff;
+      box-shadow:0 18px 40px -18px rgba(0,0,0,.5);
+    }
+    .stat-card .icon{
+      width:44px;height:44px;border-radius:50%;background:#fff;color:var(--navy-deep);
+      display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.1rem;
+    }
+    .stat-card h3{color:#fff;font-size:1.5rem;margin-bottom:6px;}
+    .stat-card p{color:#cfe0dd;font-size:.88rem;}
+
+    /* ---------- SECTION SPACING ---------- */
+    section{padding:110px 0 90px;}
+    .section-head{max-width:640px;margin-bottom:48px;}
+    .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+    .section-head h2{font-size:clamp(1.7rem,3vw,2.35rem);margin-bottom:14px;}
+    .section-head p{color:var(--ink-soft);font-size:1.02rem;}
+
+    /* ---------- ABOUT ---------- */
+    .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start;}
+    .about-collage{position:relative;}
+    .about-collage .photo-main{width:100%;height:340px;}
+    .about-collage .photo-small{
+      position:absolute;width:58%;height:220px;bottom:-46px;right:-40px;
+      box-shadow:0 20px 40px -18px rgba(0,0,0,.4);border:6px solid var(--cream);
+    }
+    .about-copy .eyebrow{margin-bottom:14px;}
+    .about-copy h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:18px;}
+    .about-copy p{color:var(--ink-soft);margin-bottom:34px;max-width:52ch;}
+    .vm-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:80px;padding-top:28px;border-top:1px solid var(--line);}
+    .vm-row h4{font-size:1.02rem;margin-bottom:8px;color:var(--navy-deep);}
+    .vm-row p{font-size:.92rem;color:var(--ink-soft);}
+
+    /* ---------- ACADEMIC PATHWAYS ---------- */
+    .pathways{background:var(--navy-deep);color:#fff;}
+    .pathways .section-head p{color:#c3d3d0;}
+    .pathways .section-head h2{color:#fff;}
+    .path-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+    .path-card{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+      border-radius:10px;padding:34px 28px;transition:background .2s,border-color .2s;
+    }
+    .path-card:hover{background:rgba(255,255,255,.09);border-color:rgba(47,143,137,.6);}
+    .path-icon{
+      width:52px;height:52px;border-radius:50%;background:var(--teal-light);color:#fff;
+      display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:22px;
+    }
+    .path-card h3{color:#fff;font-size:1.18rem;margin-bottom:12px;}
+    .path-card p{color:#c3d3d0;font-size:.92rem;margin-bottom:24px;}
+    .path-card a{font-size:.88rem;font-weight:600;color:var(--teal-light);border-bottom:1px solid rgba(47,143,137,.6);padding-bottom:2px;}
+
+    /* ---------- FACILITIES ---------- */
+    .fac-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:60px;align-items:center;}
+    .fac-grid .photo{height:420px;}
+    .fac-copy h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:16px;}
+    .fac-copy > p{color:var(--ink-soft);margin-bottom:32px;max-width:48ch;}
+    .fac-list{display:grid;grid-template-columns:1fr 1fr;gap:16px 30px;margin-bottom:34px;}
+    .fac-list li{display:flex;align-items:center;gap:10px;font-size:.95rem;color:var(--ink);}
+    .fac-list li::before{
+      content:"✓";width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;
+      font-size:.7rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    }
+
+    /* ---------- STUDENT LIFE ---------- */
+    .life-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+    .life-card{border-radius:8px;height:300px;position:relative;overflow:hidden;}
+    .life-card .cap{
+      position:absolute;left:0;bottom:0;width:100%;font-size:.9rem;font-weight:600;color:#fff;
+      padding:14px 16px;background:linear-gradient(to top,rgba(7,30,36,.9),transparent);
+    }
+    .gallery-nav{display:flex;gap:10px;justify-content:center;margin-top:36px;}
+    .gallery-nav button{
+      width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:#fff;
+      color:var(--navy-deep);font-size:1rem;cursor:pointer;
+    }
+
+    /* ---------- CAMPUS VIDEO BANNER ---------- */
+    .campus-banner{position:relative;height:440px;padding:0;overflow:hidden;}
+    .campus-banner .overlay{
+      position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+      background:linear-gradient(to bottom, rgba(7,30,36,.25), rgba(7,30,36,.65));
+    }
+    .play-btn{
+      width:78px;height:78px;border-radius:50%;background:rgba(255,255,255,.94);color:var(--navy-deep);
+      display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    .campus-banner .addr{color:#fff;font-size:.95rem;text-align:center;max-width:60ch;}
+
+    /* ---------- FAQ ---------- */
+    .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start;}
+    .faq-copy h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:16px;}
+    .faq-copy p{color:var(--ink-soft);max-width:40ch;}
+    details{
+      background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px 24px;margin-bottom:14px;
+    }
+    details[open]{border-color:var(--teal-light);}
+    details summary{
+      cursor:pointer;font-weight:600;color:var(--navy-deep);list-style:none;display:flex;justify-content:space-between;align-items:center;
+    }
+    details summary::-webkit-details-marker{display:none;}
+    details summary::after{content:"+";font-size:1.3rem;color:var(--teal);font-weight:400;}
+    details[open] summary::after{content:"–";}
+    details p{margin-top:14px;color:var(--ink-soft);font-size:.94rem;}
+    details:first-of-type{background:var(--navy);border-color:var(--navy);}
+    details:first-of-type summary{color:#fff;}
+    details:first-of-type summary::after{color:var(--teal-light);}
+    details:first-of-type p{color:#d3ddd7;}
+
+    /* ---------- CTA ---------- */
+    .cta{background:var(--navy-deep);padding:0;}
+    .cta-grid{display:grid;grid-template-columns:1fr 1fr;min-height:340px;}
+    .cta-copy{display:flex;flex-direction:column;justify-content:center;padding:60px;color:#fff;}
+    .cta-copy h2{color:#fff;font-size:clamp(1.6rem,3vw,2.15rem);margin-bottom:14px;}
+    .cta-copy p{color:#c3d3d0;margin-bottom:28px;max-width:42ch;}
+
+    /* ---------- FOOTER ---------- */
+    footer{background:var(--navy-deep);color:#c3d3d0;padding:70px 0 24px;}
+    .foot-grid{display:grid;grid-template-columns:1.3fr .8fr 1.2fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.12);}
+    .foot-logo{display:flex;align-items:center;gap:10px;color:#fff;margin-bottom:16px;}
+    .foot-logo strong{font-family:Georgia,serif;font-size:1.1rem;}
+    footer .foot-about p{font-size:.9rem;max-width:36ch;margin-bottom:20px;}
+    .socials{display:flex;gap:10px;}
+    .socials a{
+      width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
+      display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#fff;
+    }
+    footer h4{color:#fff;font-size:.98rem;margin-bottom:18px;font-family:Georgia,serif;}
+    footer .foot-menu li{margin-bottom:11px;font-size:.9rem;}
+    footer .foot-menu a:hover{color:var(--teal-light);}
+    .foot-map p{font-size:.88rem;margin-bottom:4px;}
+    .map-ph{
+      margin-top:14px;height:130px;border-radius:8px;background:linear-gradient(135deg,var(--teal),var(--navy-deep));
+      position:relative;overflow:hidden;
+    }
+    .map-ph::before{content:"";position:absolute;inset:0;background-image:
+      linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size:22px 22px;}
+    .map-ph::after{content:"📍";position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);font-size:1.4rem;}
+    .foot-bottom{display:flex;justify-content:space-between;padding-top:24px;font-size:.82rem;flex-wrap:wrap;gap:10px;}
+    .foot-bottom a{margin-left:20px;}
+
+    @media(max-width:920px){
+      .nav-links{display:none;}
+      .hero-grid,.about-grid,.fac-grid,.faq-grid,.cta-grid{grid-template-columns:1fr;}
+      .stat-cards,.path-cards{grid-template-columns:1fr;}
+      .life-gallery{grid-template-columns:1fr 1fr;}
+      .foot-grid{grid-template-columns:1fr;gap:36px;}
+      .about-collage .photo-small{position:static;width:100%;height:220px;margin-top:20px;border:none;}
+      .stat-row{margin-top:24px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">
+      <div class="logo-mark">S</div>
+      <div>
+        <strong>Sunshine Public School</strong>
+        <small>PANIPAT, HARYANA</small>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#academics">Academics</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#studentlife">Student Life</a>
+      <a href="#admissions">Admissions</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="lang">EN</span>
+      <a href="#admissions" class="btn btn-light">Enquire Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero" style="padding-top:0;">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow" style="background:rgba(47,143,137,.18);color:var(--teal-light);">PANIPAT, HARYANA</span>
+        <h1>Building Strong Foundations for Confident Futures</h1>
+        <p>Sunshine Public School blends disciplined academics with a nurturing environment, helping every child in Dutta Colony, Panipat grow into a thoughtful, capable learner.</p>
+        <div class="hero-actions">
+          <a href="#admissions" class="btn btn-light">Register Now</a>
+          <a href="#facilities" class="btn btn-outline">Explore Campus</a>
+        </div>
+      </div>
+      <div class="photo hero-img">
+        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=750&fit=crop&crop=center&auto=format" alt="Modern school building with students">
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap stat-row">
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="icon">🎓</div>
+        <h3>Quality Education</h3>
+        <p>A structured academic programme guiding students from primary through senior classes.</p>
+      </div>
+      <div class="stat-card">
+        <div class="icon">🏫</div>
+        <h3>Dutta Colony</h3>
+        <p>Conveniently located on Unnamed Road, Dutta Colony, Panipat Taraf Ansar, Panipat.</p>
+      </div>
+      <div class="stat-card">
+        <div class="icon">📞</div>
+        <h3>89282 92537</h3>
+        <p>Reach our admissions office directly for enrolment queries and campus visits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-collage">
+      <div class="photo photo-main">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&h=500&fit=crop&crop=center&auto=format" alt="Students studying together">
+      </div>
+      <div class="photo photo-small">
+        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=500&h=420&fit=crop&crop=center&auto=format" alt="Classroom with students">
+      </div>
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow">ABOUT US</span>
+      <h2>Where Discipline Meets Genuine Care</h2>
+      <p>At Sunshine Public School, we believe learning happens best in a place where children feel safe, seen, and encouraged to ask questions. Our teachers combine academic rigour with attention to each student's individual pace and interests.</p>
+      <div class="vm-row">
+        <div>
+          <h4>Our Vision</h4>
+          <p>To raise grounded, capable individuals who carry their values wherever they go.</p>
+        </div>
+        <div>
+          <h4>Our Mission</h4>
+          <p>To deliver quality education that builds critical thinking, character and everyday life skills.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMICS -->
+<section id="academics" class="pathways">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow" style="background:rgba(47,143,137,.18);color:var(--teal-light);">ACADEMICS</span>
+      <h2>Streams That Prepare Students for What's Next</h2>
+      <p>From foundational years through senior secondary, our programme is structured to build strong basics before opening into focused streams.</p>
+    </div>
+    <div class="path-cards">
+      <div class="path-card">
+        <div class="path-icon">🔬</div>
+        <h3>Science Stream</h3>
+        <p>PCM and PCB combinations with well-equipped labs for hands-on, concept-first learning.</p>
+        <a href="#">Read more →</a>
+      </div>
+      <div class="path-card">
+        <div class="path-icon">📊</div>
+        <h3>Commerce Stream</h3>
+        <p>Accounts, economics and business studies taught with real-world case examples.</p>
+        <a href="#">Read more →</a>
+      </div>
+      <div class="path-card">
+        <div class="path-icon">🎨</div>
+        <h3>Humanities & Arts</h3>
+        <p>Encouraging expression and analytical thinking through languages, history and the arts.</p>
+        <a href="#">Read more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section id="facilities">
+  <div class="wrap fac-grid">
+    <div class="photo">
+      <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700&h=600&fit=crop&crop=center&auto=format" alt="School building exterior">
+    </div>
+    <div class="fac-copy">
+      <span class="eyebrow">FACILITIES</span>
+      <h2>A Campus Built for Everyday Learning</h2>
+      <p>Our facilities in Dutta Colony are designed to support academics, sport and creative work under one roof.</p>
+      <ul class="fac-list">
+        <li>Smart Classrooms</li>
+        <li>Science Laboratories</li>
+        <li>Computer Lab</li>
+        <li>Library & Reading Room</li>
+        <li>Sports Ground</li>
+        <li>Activity & Art Room</li>
+        <li>Playground for Juniors</li>
+        <li>Health & Wellness Room</li>
+      </ul>
+      <a href="#" class="btn btn-navy">Take a Campus Tour</a>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT LIFE -->
+<section id="studentlife">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">STUDENT LIFE</span>
+      <h2>Life Beyond the Classroom</h2>
+      <p>Sports, culture and community activities that build confidence and teamwork alongside academics.</p>
+    </div>
+    <div class="life-gallery">
+      <div class="life-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4wsykXpmFSRtCFQ94QkFItwEPC5q15RsQENlHCFl6ug&s=10" alt="Sports day running">
+        <div class="cap">Sports Day</div>
+      </div>
+      <div class="life-card">
+        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=360&h=400&fit=crop&crop=center&auto=format" alt="Cultural dance performance">
+        <div class="cap">Cultural Programme</div>
+      </div>
+      <div class="life-card">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=360&h=400&fit=crop&crop=center&auto=format" alt="Community service volunteering">
+        <div class="cap">Community Service</div>
+      </div>
+      <div class="life-card">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=360&h=400&fit=crop&crop=center&auto=format" alt="Annual day celebration">
+        <div class="cap">Annual Function</div>
+      </div>
+    </div>
+    <div class="gallery-nav">
+      <button aria-label="Previous">←</button>
+      <button aria-label="Next">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUS BANNER -->
+<div class="campus-banner">
+  <img src="https://images.unsplash.com/photo-1574958269340-fa927503f3dd?w=1600&h=800&fit=crop&crop=center&auto=format" alt="School campus aerial view">
+  <div class="overlay">
+    <div class="play-btn">▶</div>
+    <p class="addr">58M, Unnamed Road, Dutta Colony, Panipat Taraf Ansar, Panipat, Haryana 132105</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap faq-grid">
+    <div class="faq-copy">
+      <span class="eyebrow">FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+      <p>Quick answers about admissions, curriculum and school routine at Sunshine Public School.</p>
+    </div>
+    <div class="faq-list">
+      <details open>
+        <summary>What curriculum does the school follow?</summary>
+        <p>Sunshine Public School follows a structured academic curriculum from the primary years through senior secondary.</p>
+      </details>
+      <details>
+        <summary>What is the medium of instruction?</summary>
+        <p>Classes are conducted in English, with Hindi taught as a core language subject.</p>
+      </details>
+      <details>
+        <summary>Where is the school located?</summary>
+        <p>The campus is at 58M, Unnamed Road, Dutta Colony, Panipat Taraf Ansar, Panipat, Haryana 132105.</p>
+      </details>
+      <details>
+        <summary>How do I apply for admission?</summary>
+        <p>Visit the admissions office or call 89282 92537 to begin the enrolment process.</p>
+      </details>
+      <details>
+        <summary>Do you provide transport facilities?</summary>
+        <p>Yes, school transport routes cover Panipat and nearby areas — contact the office for route details.</p>
+      </details>
+      <details>
+        <summary>What are the school timings?</summary>
+        <p>School hours are from 7:45 AM to 1:45 PM for all classes, with additional activity hours on selected days.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="admissions" class="cta">
+  <div class="cta-grid">
+    <div class="photo" style="border-radius:0;">
+      <img src="https://images.unsplash.com/photo-1574958269340-fa927503f3dd?w=800&h=700&fit=crop&crop=center&auto=format" alt="School main gate entrance">
+    </div>
+    <div class="cta-copy">
+      <h2>Admissions Are Now Open</h2>
+      <p>Join a school community in Panipat that's focused on academics, character, and everyday care for every child.</p>
+      <a href="#" class="btn btn-light" style="align-self:flex-start;">Register Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <div class="foot-logo">
+          <div class="logo-mark">S</div>
+          <strong>Sunshine Public School</strong>
+        </div>
+        <p>A school in Panipat, Haryana, focused on strong academics and everyday character building.</p>
+        <div class="socials">
+          <a href="#">f</a>
+          <a href="#">in</a>
+          <a href="#">ig</a>
+        </div>
+      </div>
+      <div>
+        <h4>Menu</h4>
+        <ul class="foot-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#academics">Academics</a></li>
+          <li><a href="#facilities">Facilities</a></li>
+          <li><a href="#studentlife">Student Life</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+        </ul>
+      </div>
+      <div class="foot-map">
+        <h4>Admissions Office</h4>
+        <p>58M, Unnamed Road, Dutta Colony,</p>
+        <p>Panipat Taraf Ansar, Panipat, Haryana 132105</p>
+        <p style="margin-top:10px;">Phone: 89282 92537</p>
+        <div class="map-ph"></div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Sunshine Public School. All Rights Reserved.</span>
+      <span>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Disclosures</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
