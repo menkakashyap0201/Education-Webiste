@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Haryana Public School — Panipat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF2E2;
+    --paper-deep:#F4E7CE;
+    --ink:#2A2118;
+    --ink-soft:#6B5D4C;
+    --marigold:#E0972E;
+    --marigold-deep:#B5711A;
+    --peacock:#0E6E63;
+    --peacock-deep:#0A4C44;
+    --berry:#9C3F5E;
+    --line:#E6D6B0;
+    --white:#FFFCF5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Petrona',serif;
+    color:var(--ink);
+    line-height:1.14;
+    font-weight:600;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  section{padding:100px 0;}
+
+  /* ===== TORN PAPER DIVIDER ===== */
+  .torn{
+    height:34px;width:100%;
+    background:var(--paper);
+    clip-path:polygon(
+      0% 100%, 0% 30%, 3% 60%, 6% 20%, 9% 55%, 12% 15%, 15% 50%, 18% 10%,
+      21% 45%, 24% 25%, 27% 60%, 30% 20%, 33% 50%, 36% 15%, 39% 55%, 42% 25%,
+      45% 60%, 48% 15%, 51% 50%, 54% 20%, 57% 55%, 60% 10%, 63% 45%, 66% 25%,
+      69% 60%, 72% 15%, 75% 50%, 78% 20%, 81% 55%, 84% 10%, 87% 45%, 90% 25%,
+      93% 60%, 96% 15%, 100% 40%, 100% 100%
+    );
+  }
+  .torn.flip{transform:scaleY(-1);}
+  .torn.on-peacock{background:var(--peacock-deep);}
+  .torn.on-paper-deep{background:var(--paper-deep);}
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(251,242,226,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{
+    width:42px;height:42px;flex:none;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #F4C065, var(--marigold) 60%, var(--marigold-deep) 100%);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 3px 10px rgba(181,113,26,0.35);
+  }
+  .brand-mark svg{width:22px;height:22px;}
+  .brand-name{font-family:'Petrona',serif;font-weight:600;font-size:1.22rem;color:var(--peacock-deep);}
+  .brand-sub{font-size:0.72rem;color:var(--ink-soft);letter-spacing:0.02em;}
+  .nav-links{display:flex;gap:32px;font-size:0.95rem;font-weight:500;color:var(--ink-soft);}
+  .nav-links a{position:relative;padding:4px 0;transition:color .2s;}
+  .nav-links a:hover{color:var(--peacock-deep);}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;
+    background:var(--marigold);transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-phone{
+    display:flex;align-items:center;gap:9px;
+    background:var(--peacock);color:var(--white);
+    padding:11px 20px;border-radius:100px;font-weight:600;font-size:0.9rem;
+    box-shadow:0 8px 20px rgba(14,110,99,0.28);
+    transition:transform .2s ease, background .2s ease;
+  }
+  .nav-phone:hover{background:var(--peacock-deep);transform:translateY(-2px);}
+  .nav-phone svg{width:16px;height:16px;}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;}
+  .menu-btn span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;}
+
+  /* ===== HERO ===== */
+  .hero{padding:74px 0 0;overflow:visible;}
+  .hero .wrap{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center;
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--peacock-deep);font-weight:600;font-size:0.92rem;
+    background:rgba(14,110,99,0.09);padding:7px 16px;border-radius:100px;
+    margin-bottom:24px;
+  }
+  .kicker svg{width:15px;height:15px;}
+  .hero h1{
+    font-size:clamp(2.5rem,4.4vw,3.5rem);max-width:12ch;margin-bottom:22px;letter-spacing:-0.01em;
+  }
+  .hero p.lede{font-size:1.12rem;color:var(--ink-soft);max-width:44ch;margin-bottom:34px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:46px;}
+  .btn-solid{
+    background:var(--marigold-deep);color:var(--white);
+    padding:15px 30px;border-radius:100px;font-weight:600;font-size:0.98rem;
+    box-shadow:0 10px 24px rgba(181,113,26,0.3);
+    transition:transform .2s ease, box-shadow .2s ease;
+    display:inline-block;
+  }
+  .btn-solid:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(181,113,26,0.36);}
+  .btn-line{
+    border:1.5px solid var(--ink);color:var(--ink);
+    padding:13.5px 28px;border-radius:100px;font-weight:600;font-size:0.98rem;
+    transition:background .2s ease,color .2s ease;
+  }
+  .btn-line:hover{background:var(--ink);color:var(--white);}
+
+  .hero-stats{display:flex;gap:38px;padding-top:26px;border-top:1px solid var(--line);}
+  .hero-stats div strong{
+    display:block;font-family:'Petrona',serif;font-size:1.65rem;color:var(--peacock-deep);font-weight:600;
+  }
+  .hero-stats div span{font-size:0.82rem;color:var(--ink-soft);font-weight:500;}
+
+  .hero-visual{position:relative;}
+  .blob-frame{
+    position:relative;aspect-ratio:1/1.05;
+    border-radius:46% 54% 61% 39% / 45% 40% 60% 55%;
+    overflow:hidden;
+    box-shadow:0 30px 60px -18px rgba(42,33,24,0.32);
+  }
+  .blob-frame img{width:100%;height:100%;object-fit:cover;}
+  .badge-float{
+    position:absolute;bottom:6%;left:-8%;
+    background:var(--white);border-radius:18px;
+    padding:16px 20px;display:flex;align-items:center;gap:12px;
+    box-shadow:0 16px 32px -12px rgba(42,33,24,0.28);
+    max-width:220px;
+  }
+  .badge-float .ic{
+    width:40px;height:40px;border-radius:12px;flex:none;
+    background:var(--berry);display:flex;align-items:center;justify-content:center;
+  }
+  .badge-float strong{display:block;font-family:'Petrona',serif;font-size:1rem;color:var(--ink);}
+  .badge-float span{font-size:0.78rem;color:var(--ink-soft);}
+  .seed-dot{
+    position:absolute;top:6%;right:2%;width:74px;height:74px;border-radius:50%;
+    background:var(--marigold);opacity:0.9;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 26px rgba(181,113,26,0.35);
+  }
+  .seed-dot span{font-family:'Petrona',serif;font-size:0.78rem;font-weight:600;color:var(--white);text-align:center;line-height:1.2;}
+
+  /* ===== HIGHLIGHT CHIPS ===== */
+  .chip-row{background:var(--peacock-deep);padding:26px 0;}
+  .chip-track{
+    display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;
+    padding:0 32px;max-width:1180px;margin:0 auto;
+  }
+  .chip-track::-webkit-scrollbar{display:none;}
+  .chip{
+    flex:none;scroll-snap-align:start;
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);
+    color:var(--paper);padding:11px 20px;border-radius:100px;
+    font-size:0.88rem;font-weight:500;white-space:nowrap;
+  }
+  .chip strong{color:var(--marigold);font-weight:600;}
+
+  /* ===== ABOUT ===== */
+  .about{background:var(--white);}
+  .about .wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;}
+  .about-collage{position:relative;display:grid;grid-template-columns:1.1fr 0.9fr;gap:16px;}
+  .about-collage img{width:100%;height:100%;object-fit:cover;}
+  .collage-a{border-radius:12px 60px 12px 12px;height:100%;}
+  .collage-b{display:flex;flex-direction:column;gap:16px;}
+  .collage-b img:first-child{border-radius:12px 12px 60px 12px;height:150px;}
+  .collage-b img:last-child{border-radius:12px 12px 12px 60px;height:150px;}
+  .section-label{
+    color:var(--berry);font-weight:600;font-size:0.92rem;margin-bottom:14px;display:block;
+  }
+  .about-copy h2{font-size:clamp(1.9rem,3.2vw,2.5rem);margin-bottom:20px;max-width:14ch;}
+  .about-copy p{color:var(--ink-soft);font-size:1.02rem;margin-bottom:16px;max-width:56ch;}
+  .value-list{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .value-item{display:flex;gap:12px;align-items:flex-start;}
+  .value-item .num{
+    font-family:'Petrona',serif;font-size:1.3rem;color:var(--marigold-deep);font-weight:600;flex:none;width:34px;
+  }
+  .value-item h4{font-size:0.98rem;margin-bottom:3px;}
+  .value-item p{font-size:0.86rem;color:var(--ink-soft);margin:0;}
+
+  /* ===== STAGES BENTO ===== */
+  .stages{background:var(--paper);}
+  .section-head{max-width:600px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.9rem,3.2vw,2.5rem);}
+  .section-head p{color:var(--ink-soft);margin-top:14px;font-size:1.03rem;}
+
+  .stage-bento{
+    display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,180px);gap:20px;
+  }
+  .stage-tile{
+    border-radius:22px;padding:28px;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-end;
+  }
+  .stage-tile h4{font-family:'Petrona',serif;font-size:1.3rem;margin-bottom:6px;}
+  .stage-tile p{font-size:0.88rem;}
+  .stage-tile.t1{grid-column:span 2;grid-row:span 2;background:var(--peacock);color:var(--paper);}
+  .stage-tile.t1 p{color:#CFE6DF;}
+  .stage-tile.t2{grid-column:span 2;grid-row:span 1;background:var(--marigold);color:var(--ink);}
+  .stage-tile.t3{grid-column:span 1;grid-row:span 1;background:var(--white);border:1px solid var(--line);}
+  .stage-tile.t3 p, .stage-tile.t4 p{color:var(--ink-soft);}
+  .stage-tile.t4{grid-column:span 1;grid-row:span 1;background:var(--berry);color:var(--paper);}
+  .stage-tile.t4 p{color:#F0D3DC;}
+  .stage-tag{
+    position:absolute;top:20px;left:20px;font-size:0.75rem;font-weight:600;
+    background:rgba(255,255,255,0.22);padding:4px 12px;border-radius:100px;
+  }
+  .stage-tile.t3 .stage-tag{background:var(--paper-deep);color:var(--ink);}
+
+  /* ===== FACILITIES BENTO ===== */
+  .facilities{background:var(--paper-deep);}
+  .fac-bento{
+    display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,220px);gap:20px;
+  }
+  .fac-tile{
+    border-radius:20px;position:relative;overflow:hidden;
+    display:flex;align-items:flex-end;padding:22px;
+  }
+  .fac-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .fac-tile::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(42,33,24,0.78), rgba(42,33,24,0.05) 60%);
+  }
+  .fac-tile span{position:relative;z-index:1;color:var(--white);font-family:'Petrona',serif;font-size:1.08rem;font-weight:600;}
+  .fac-tile.f1{grid-column:span 2;grid-row:span 2;}
+  .fac-tile.f2{grid-column:span 1;grid-row:span 1;}
+  .fac-tile.f3{grid-column:span 1;grid-row:span 1;}
+  .fac-tile.f4{grid-column:span 2;grid-row:span 1;}
+
+  /* ===== ACHIEVERS ===== */
+  .achievers{background:var(--white);}
+  .ach-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .ach-card{text-align:center;}
+  .ach-photo{
+    width:104px;height:104px;border-radius:50%;margin:0 auto 18px;overflow:hidden;
+    border:3px solid var(--paper-deep);
+  }
+  .ach-photo img{width:100%;height:100%;object-fit:cover;}
+  .ach-card h4{font-size:1.05rem;margin-bottom:3px;}
+  .ach-card .stream{font-size:0.84rem;color:var(--ink-soft);margin-bottom:10px;}
+  .ach-score{
+    display:inline-block;font-family:'Petrona',serif;font-size:1.3rem;font-weight:600;color:var(--peacock-deep);
+  }
+  .ach-score span{display:block;font-family:'Work Sans',sans-serif;font-size:0.76rem;color:var(--ink-soft);font-weight:500;}
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials{background:var(--paper);}
+  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .t-card{
+    background:var(--white);border-radius:4px;padding:32px 28px;
+    box-shadow:0 18px 34px -22px rgba(42,33,24,0.3);
+    position:relative;
+  }
+  .t-card:nth-child(1){transform:rotate(-1.4deg);}
+  .t-card:nth-child(2){transform:rotate(0.8deg);}
+  .t-card:nth-child(3){transform:rotate(-0.6deg);}
+  .t-card::before{
+    content:"";position:absolute;top:-8px;left:32px;width:36px;height:16px;
+    background:var(--marigold);opacity:0.85;transform:rotate(-4deg);border-radius:2px;
+  }
+  .t-quote{font-family:'Petrona',serif;font-style:italic;font-size:1.06rem;color:var(--ink);margin-bottom:22px;line-height:1.55;}
+  .t-person{display:flex;align-items:center;gap:12px;}
+  .t-avatar{width:40px;height:40px;border-radius:50%;flex:none;object-fit:cover;}
+  .t-person strong{display:block;font-size:0.92rem;}
+  .t-person span{font-size:0.8rem;color:var(--ink-soft);}
+
+  /* ===== CTA ===== */
+  .cta-band{background:var(--peacock-deep);color:var(--paper);text-align:center;}
+  .cta-band h2{color:var(--paper);font-size:clamp(1.9rem,3.4vw,2.6rem);max-width:16ch;margin:0 auto 16px;}
+  .cta-band p{color:#BFE0D9;max-width:46ch;margin:0 auto 32px;font-size:1.02rem;}
+  .cta-band .btn-solid{background:var(--marigold);color:var(--ink);}
+  .cta-band .btn-solid:hover{background:var(--marigold-deep);color:var(--white);}
+
+  /* ===== FAQ ===== */
+  .faq{background:var(--white);}
+  .faq .wrap{max-width:800px;}
+  details{border-bottom:1px solid var(--line);padding:22px 0;}
+  summary{
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    cursor:pointer;list-style:none;font-family:'Petrona',serif;font-size:1.08rem;font-weight:600;color:var(--ink);
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"+";flex:none;font-size:1.3rem;color:var(--marigold-deep);font-weight:400;
+    transition:transform .2s ease;
+  }
+  details[open] summary::after{content:"–";}
+  .faq-body{padding-top:14px;font-size:0.96rem;color:var(--ink-soft);max-width:64ch;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink);color:#C9BCA6;padding:70px 0 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:44px;margin-bottom:48px;}
+  .foot-brand .brand-name{color:var(--white);}
+  .foot-brand p{margin-top:16px;font-size:0.9rem;max-width:30ch;color:#9C8E78;}
+  footer h5{color:var(--white);font-family:'Petrona',serif;font-size:1rem;margin-bottom:18px;font-weight:600;}
+  footer ul li{margin-bottom:11px;font-size:0.9rem;}
+  footer ul li a{transition:color .2s;}
+  footer ul li a:hover{color:var(--marigold);}
+  .foot-contact li{display:flex;gap:10px;align-items:flex-start;font-size:0.86rem;}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;
+    display:flex;justify-content:space-between;font-size:0.82rem;color:#7A6E5B;flex-wrap:wrap;gap:10px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:980px){
+    .nav-links{display:none;}
+    .menu-btn{display:block;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-visual{max-width:380px;margin:0 auto;}
+    .about .wrap{grid-template-columns:1fr;}
+    .value-list{grid-template-columns:1fr;}
+    .stage-bento{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,170px);}
+    .stage-tile.t1{grid-column:span 2;grid-row:span 1;}
+    .fac-bento{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,180px);}
+    .fac-tile.f1{grid-column:span 2;grid-row:span 1;}
+    .fac-tile.f4{grid-column:span 2;}
+    .ach-row{grid-template-columns:repeat(2,1fr);gap:32px 20px;}
+    .t-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:600px){
+    section{padding:70px 0;}
+    .hero{padding:56px 0 0;}
+    .hero-stats{flex-wrap:wrap;gap:24px;}
+    .stage-bento{grid-template-columns:1fr;grid-template-rows:auto;}
+    .stage-tile{min-height:150px;}
+    .stage-tile.t1{grid-column:span 1;}
+    .fac-bento{grid-template-columns:1fr;grid-template-rows:auto;}
+    .fac-tile{min-height:180px;}
+    .fac-tile.f1,.fac-tile.f4{grid-column:span 1;}
+    .ach-row{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav wrap">
+    <a href="#top" class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 5.5L20 9l-4.4 3.8L17 19l-5-3.2L7 19l1.4-6.2L4 9l5.6-0.5L12 3z" fill="#2A2118"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">New Haryana Public School</div>
+        <div class="brand-sub">Bharat Nagar · Panipat</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#stages">Academics</a></li>
+      <li><a href="#facilities">Facilities</a></li>
+      <li><a href="#achievers">Achievers</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="tel:9416959518" class="nav-phone">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.5 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.5c1 .4 2 .6 3 .7a2 2 0 011.7 2.1z" stroke="#FFFCF5" stroke-width="1.7"/></svg>
+      94169 59518
+    </a>
+    <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 6h10M4 18h13" stroke="#0A4C44" stroke-width="2" stroke-linecap="round"/></svg>
+        Admissions open for 2026–27
+      </span>
+      <h1>A school in Bharat Nagar built around how children actually learn</h1>
+      <p class="lede">New Haryana Public School gives every student small classes, teachers who know their name, and a campus where curiosity is the starting point, not an afterthought.</p>
+      <div class="hero-actions">
+        <a href="tel:9416959518" class="btn-solid">Call the Admission Desk</a>
+        <a href="#about" class="btn-line">Take a Look Inside</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>18:1</strong><span>Student–teacher ratio</span></div>
+        <div><strong>96%</strong><span>Board pass rate</span></div>
+        <div><strong>Nur–XII</strong><span>Classes on one campus</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="blob-frame">
+        <img src="https://www.tribuneindia.com/sortd-service/imaginary/v22-01/jpg/large/high?url=dGhldHJpYnVuZS1zb3J0ZC1wcm8tcHJvZC1zb3J0ZC9tZWRpYWQyMTQwNGQwLTRlOGMtMTFlZi05ZmFhLWFiNzg5M2FlZWVhYy5qcGc=" alt="New Haryana Public School campus">
+      </div>
+      <div class="seed-dot"><span>CBSE<br>Affiliated</span></div>
+      <div class="badge-float">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#FBF2E2" stroke-width="1.8"/><path d="M4 21v-1a8 8 0 0116 0v1" stroke="#FBF2E2" stroke-width="1.8"/></svg></div>
+        <div><strong>1,100+</strong><span>Students on campus</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="torn"></div>
+
+<div class="chip-row">
+  <div class="chip-track">
+    <div class="chip"><strong>Est. 2007</strong> in Bharat Nagar, Panipat</div>
+    <div class="chip">District Athletics Champions — <strong>2026</strong></div>
+    <div class="chip"><strong>100%</strong> Class X board result</div>
+    <div class="chip">State Science Fair — <strong>3 medals</strong></div>
+    <div class="chip"><strong>GPS-tracked</strong> transport across Panipat</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-collage">
+      <img class="collage-a" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&h=640&fit=crop&crop=center&auto=format" alt="Students studying together">
+      <div class="collage-b">
+        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=400&h=200&fit=crop&crop=center&auto=format" alt="Teacher guiding a student">
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=200&fit=crop&crop=center&auto=format" alt="Smart classroom">
+      </div>
+    </div>
+    <div class="about-copy">
+      <span class="section-label">Our Story</span>
+      <h2>Nearly two decades in Bharat Nagar</h2>
+      <p>New Haryana Public School opened on Kabri Road with a straightforward promise to Panipat families: every child would be known, not just enrolled. That promise still shapes how we run the school today — from class sizes to how often teachers call home.</p>
+      <p>We follow the CBSE curriculum from Nursery through Class XII, but we treat sport, art and everyday character as seriously as the subjects that show up on a report card.</p>
+      <div class="value-list">
+        <div class="value-item"><div class="num">01</div><div><h4>Known by name</h4><p>Small sections so no student is lost in the crowd.</p></div></div>
+        <div class="value-item"><div class="num">02</div><div><h4>Taught to think</h4><p>Lessons built around understanding, not memorising.</p></div></div>
+        <div class="value-item"><div class="num">03</div><div><h4>Parents kept close</h4><p>Regular updates on attendance, tests and progress.</p></div></div>
+        <div class="value-item"><div class="num">04</div><div><h4>Safety first</h4><p>Supervised campus, trained staff, a nurse on call.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="torn on-paper-deep"></div>
+
+<section class="stages" id="stages">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">Academics</span>
+      <h2>Four stages, one steady climb to the boards</h2>
+      <p>Each stage of school is built for how children learn at that age — not a smaller version of the one after it.</p>
+    </div>
+    <div class="stage-bento">
+      <div class="stage-tile t1">
+        <div class="stage-tag">Grades 9–12</div>
+        <h4>Senior Secondary</h4>
+        <p>Science, Commerce and Humanities streams with focused board-exam preparation and one-on-one mentoring.</p>
+      </div>
+      <div class="stage-tile t2">
+        <div class="stage-tag">Grades 6–8</div>
+        <h4>Middle School</h4>
+        <p>Subject specialists and lab work introduce the full CBSE course load gradually.</p>
+      </div>
+      <div class="stage-tile t3">
+        <div class="stage-tag">Grades 1–5</div>
+        <h4>Primary</h4>
+        <p>Foundations in literacy, numeracy and curiosity.</p>
+      </div>
+      <div class="stage-tile t4">
+        <div class="stage-tag">Nursery–UKG</div>
+        <h4>Early Years</h4>
+        <p>Play-based learning that builds language and confidence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facilities" id="facilities">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">On Campus</span>
+      <h2>Everything a school day needs, in one place</h2>
+      <p>No borrowed grounds, no bussed-in labs — the whole campus is built for the day-to-day of school life.</p>
+    </div>
+    <div class="fac-bento">
+      <div class="fac-tile f1">
+        <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=700&h=700&fit=crop&crop=center&auto=format" alt="Library">
+        <span>Central library, 9,000+ titles</span>
+      </div>
+      <div class="fac-tile f2">
+        <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=460&h=460&fit=crop&crop=center&auto=format" alt="Science labs">
+        <span>Science &amp; computer labs</span>
+      </div>
+      <div class="fac-tile f3">
+        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=460&h=460&fit=crop&crop=center&auto=format" alt="Sports ground">
+        <span>Sports ground &amp; courts</span>
+      </div>
+      <div class="fac-tile f4">
+        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&h=460&fit=crop&crop=center&auto=format" alt="Art and music studio">
+        <span>Art &amp; music studio, transport across Panipat</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="torn flip"></div>
+
+<section class="achievers" id="achievers">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">Board Results 2026</span>
+      <h2>This year's Class X and XII toppers</h2>
+    </div>
+    <div class="ach-row">
+      <div class="ach-card">
+        <div class="ach-photo"><img src="https://images.unsplash.com/photo-1623303366639-0e330d7c3d9f?w=200&h=200&fit=crop&crop=faces&auto=format" alt="Aarav Malhotra"></div>
+        <h4>Aarav Malhotra</h4>
+        <div class="stream">Class XII, Science</div>
+        <div class="ach-score">97.2%<span>School Topper</span></div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-photo"><img src="https://images.unsplash.com/photo-1572847748080-bac263fae977?w=200&h=200&fit=crop&crop=faces&auto=format" alt="Diya Chauhan"></div>
+        <h4>Diya Chauhan</h4>
+        <div class="stream">Class XII, Commerce</div>
+        <div class="ach-score">96.4%<span>Stream Topper</span></div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-photo"><img src="https://images.unsplash.com/flagged/photo-1574098335395-18cf525e45d6?w=200&h=200&fit=crop&crop=faces&auto=format" alt="Karan Bansal"></div>
+        <h4>Karan Bansal</h4>
+        <div class="stream">Class X</div>
+        <div class="ach-score">98.0%<span>School Topper</span></div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-photo"><img src="https://images.unsplash.com/photo-1765572144519-1dc1e6e07bc9?w=200&h=200&fit=crop&crop=faces&auto=format" alt="Ishita Rana">
+</div>
+        <h4>Ishita Rana</h4>
+        <div class="stream">Class XII, Humanities</div>
+        <div class="ach-score">95.8%<span>Stream Topper</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">From Our Families</span>
+      <h2>What parents tell us</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <p class="t-quote">"My son couldn't sit still in Class II. His teacher didn't fight that — she built it into how he learned. He's thriving now."</p>
+        <div class="t-person">
+          <img class="t-avatar" src="https://i.pravatar.cc/100?img=48" alt="Neeraj Sharma">
+          <div><strong>Neeraj Sharma</strong><span>Parent, Class IV</span></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-quote">"The Class XII mentors talked us through stream choice like it was a conversation, not a decision made for her."</p>
+        <div class="t-person">
+          <img class="t-avatar" src="https://i.pravatar.cc/100?img=21" alt="Poonam Yadav">
+          <div><strong>Poonam Yadav</strong><span>Parent, Class XII</span></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-quote">"Bus tracking, attendance, test scores — I see it all the same day. I've never had to chase the school office for anything."</p>
+        <div class="t-person">
+          <img class="t-avatar" src="https://i.pravatar.cc/100?img=15" alt="Deepak Arora">
+          <div><strong>Deepak Arora</strong><span>Parent, Class VII</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Come see the campus before you decide</h2>
+    <p>Seats for Nursery, Class VI and Class XI are limited for the 2026–27 session. A visit takes twenty minutes and answers most questions faster than a phone call can.</p>
+    <a href="tel:9416959518" class="btn-solid">Book a Visit — 94169 59518</a>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:36px;">
+      <span class="section-label">Common Questions</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <details open>
+      <summary>What documents are needed for admission?</summary>
+      <div class="faq-body">Birth certificate, the previous school's transfer certificate and report card, an Aadhaar card, and four passport-size photographs of the student.</div>
+    </details>
+    <details>
+      <summary>Does the school provide transport in Panipat?</summary>
+      <div class="faq-body">Yes — GPS-tracked buses cover most routes across Panipat, including Bharat Nagar and Kabri Road, with an attendant on every bus. Route details are shared at the time of admission.</div>
+    </details>
+    <details>
+      <summary>What is the medium of instruction?</summary>
+      <div class="faq-body">Classes are conducted in English, with Hindi and Sanskrit taught as additional languages under the CBSE syllabus.</div>
+    </details>
+    <details>
+      <summary>Which streams are offered in Class XI and XII?</summary>
+      <div class="faq-body">Science (Medical and Non-Medical), Commerce, and Humanities, each with dedicated subject teachers and lab access.</div>
+    </details>
+    <details>
+      <summary>How do I book a campus visit?</summary>
+      <div class="faq-body">Call the admission desk at 94169 59518. Visits are scheduled Monday to Saturday, 9 AM to 1 PM.</div>
+    </details>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand-name" style="font-family:'Petrona',serif;font-size:1.2rem;">New Haryana Public School</div>
+        <p>A CBSE school in Bharat Nagar, built around small classes and a lot of attention.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#about">About the School</a></li>
+          <li><a href="#stages">Academics</a></li>
+          <li><a href="#facilities">Facilities</a></li>
+          <li><a href="#faq">FAQs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Admissions</h5>
+        <ul>
+          <li><a href="#">How to Apply</a></li>
+          <li><a href="#">Fee Structure</a></li>
+          <li><a href="#">School Calendar</a></li>
+          <li><a href="#">Transport Routes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul class="foot-contact">
+          <li><span>📍</span><span>Bharat Nagar, Kabri Road, Panipat, Haryana</span></li>
+          <li><span>📞</span><span><a href="tel:9416959518">94169 59518</a></span></li>
+          <li><span>✉️</span><span>admissions@newharyanaschool.edu.in</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 New Haryana Public School, Panipat. All rights reserved.</span>
+      <span>Bharat Nagar, Kabri Road, Panipat, Haryana</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
