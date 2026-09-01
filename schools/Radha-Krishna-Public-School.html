@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radha Krishna Public School</title>
+<style>
+  :root{
+    --teal:#12a7bd;
+    --teal-dark:#0e8ea1;
+    --coral:#ff7a52;
+    --coral-dark:#ef5f34;
+    --navy:#1b2a4a;
+    --ink:#43526b;
+    --cream:#f6f9fb;
+    --line:#e4edf0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:#fff;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:#fff;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 0;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-weight:800;letter-spacing:.5px;color:var(--teal-dark);
+    font-size:19px;
+  }
+  .logo .mark{
+    width:38px;height:38px;border-radius:10px;
+    background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:18px;font-weight:900;
+  }
+  nav ul{display:flex;gap:34px;font-size:14px;font-weight:600;color:var(--navy);}
+  nav a{transition:color .2s;}
+  nav a:hover{color:var(--coral);}
+
+  /* ===== HERO / CAROUSEL ===== */
+  .hero{
+    position:relative;
+    background:var(--cream);
+    padding:56px 0 90px;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;left:0;right:0;bottom:0;height:120px;
+    background:#fff;
+    clip-path:polygon(0 60%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  .carousel{
+    position:relative;
+    max-width:1180px;margin:0 auto;padding:0 32px;
+    min-height:460px;
+  }
+  .slide{
+    position:absolute;inset:0;padding:0 32px;
+    display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;
+    opacity:0;transform:translateX(24px);
+    transition:opacity .7s ease, transform .7s ease;
+    pointer-events:none;
+  }
+  .slide.active{opacity:1;transform:translateX(0);pointer-events:auto;}
+  .slide-text .eyebrow{
+    display:inline-block;
+    background:#fff;color:var(--coral-dark);
+    border:1px solid #ffd9c9;
+    font-size:12px;font-weight:700;letter-spacing:.3px;
+    padding:6px 14px;border-radius:20px;margin-bottom:18px;
+  }
+  .slide-text h1{
+    font-size:44px;line-height:1.15;color:var(--navy);font-weight:800;
+    margin-bottom:18px;
+  }
+  .slide-text p{
+    font-size:16px;color:var(--ink);max-width:420px;margin-bottom:26px;line-height:1.6;
+  }
+  .btn{
+    display:inline-block;padding:13px 28px;border-radius:30px;
+    background:var(--teal);color:#fff;font-weight:700;font-size:14px;
+    letter-spacing:.3px;transition:background .2s, transform .2s;
+    border:none;cursor:pointer;
+  }
+  .btn:hover{background:var(--teal-dark);transform:translateY(-2px);}
+  .btn.outline{
+    background:transparent;color:var(--teal-dark);border:2px solid var(--teal);
+    padding:11px 26px;
+  }
+  .btn.outline:hover{background:var(--teal);color:#fff;}
+
+  .slide-art{
+    position:relative;height:400px;border-radius:24px;overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(18,167,189,.35);
+  }
+  .slide-art svg{width:100%;height:100%;display:block;}
+
+  .carousel-dots{
+    position:absolute;bottom:-46px;left:50%;transform:translateX(-50%);
+    display:flex;gap:10px;
+  }
+  .carousel-dots button{
+    width:9px;height:9px;border-radius:50%;border:none;background:#c9dde1;
+    cursor:pointer;transition:all .3s;padding:0;
+  }
+  .carousel-dots button.active{
+    width:26px;border-radius:6px;background:var(--coral);
+  }
+
+  /* ===== INFO STRIP ===== */
+  .info-strip{
+    text-align:center;padding:70px 0 40px;
+  }
+  .info-strip h2{
+    font-size:28px;color:var(--navy);font-weight:800;line-height:1.4;margin-bottom:14px;
+  }
+  .info-strip p{
+    max-width:600px;margin:0 auto;color:var(--ink);font-size:15px;line-height:1.7;
+  }
+
+  .feature-row{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+    margin-top:50px;
+  }
+  .feature-card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:30px 20px;text-align:center;
+    box-shadow:0 10px 30px -18px rgba(27,42,74,.15);
+  }
+  .feature-card .icon{
+    width:54px;height:54px;border-radius:50%;
+    background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 16px;color:#fff;
+  }
+  .feature-card h4{font-size:15px;color:var(--navy);margin-bottom:8px;font-weight:700;}
+  .feature-card a{color:var(--teal-dark);font-size:13px;font-weight:700;}
+
+  /* ===== NUMBERED SECTIONS ===== */
+  .split-section{
+    padding:90px 0;
+  }
+  .split-section .container{
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  }
+  .split-section.reverse .container{direction:rtl;}
+  .split-section.reverse .container > *{direction:ltr;}
+
+  .step-num{
+    width:34px;height:34px;border-radius:50%;
+    background:#ffe3d6;color:var(--coral-dark);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:14px;margin-bottom:18px;
+  }
+  .split-section h3{font-size:26px;color:var(--navy);font-weight:800;margin-bottom:16px;line-height:1.3;}
+  .split-section p{font-size:15px;line-height:1.7;margin-bottom:24px;max-width:440px;}
+
+  .art-panel{
+    background:linear-gradient(135deg,#e7f7f9,#f6f9fb);
+    border-radius:20px;padding:36px;height:340px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .art-panel svg{width:100%;height:100%;}
+
+  /* ===== CONTACT / CTA ===== */
+  .cta-band{
+    background:linear-gradient(120deg,var(--teal-dark),var(--teal));
+    color:#fff;padding:70px 0;text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .cta-band h2{font-size:30px;font-weight:800;margin-bottom:14px;}
+  .cta-band p{max-width:500px;margin:0 auto 30px;opacity:.9;font-size:15px;}
+  .cta-band .btn{background:var(--coral);}
+  .cta-band .btn:hover{background:var(--coral-dark);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy);color:#c7d0e0;padding:56px 0 26px;}
+  .footer-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:36px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .footer-grid h5{color:#fff;font-size:15px;margin-bottom:16px;font-weight:700;}
+  .footer-grid p, .footer-grid li{font-size:13.5px;line-height:1.9;color:#a9b4cc;}
+  .footer-grid .flogo{
+    display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:18px;margin-bottom:14px;
+  }
+  .footer-grid .flogo .mark{
+    width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--teal),var(--coral));
+    display:flex;align-items:center;justify-content:center;font-size:15px;
+  }
+  .bottom-bar{
+    padding-top:22px;display:flex;justify-content:space-between;font-size:12.5px;color:#8592ad;
+  }
+
+  /* ===== ABOUT ===== */
+  .about-section{padding:90px 0;background:#fff;}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .about-grid h3{font-size:28px;color:var(--navy);font-weight:800;margin-bottom:18px;line-height:1.3;}
+  .about-grid p{font-size:15px;line-height:1.8;margin-bottom:18px;max-width:460px;}
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;}
+  .stat-block{text-align:center;padding:18px 10px;border-radius:12px;background:var(--cream);}
+  .stat-block strong{display:block;font-size:26px;color:var(--teal-dark);font-weight:800;}
+  .stat-block span{font-size:12.5px;color:var(--ink);}
+
+  /* ===== FACILITIES ===== */
+  .facilities-section{padding:90px 0;background:var(--cream);}
+  .section-head{text-align:center;max-width:600px;margin:0 auto 50px;}
+  .section-head h2{font-size:28px;color:var(--navy);font-weight:800;margin-bottom:14px;}
+  .section-head p{font-size:15px;line-height:1.7;}
+  .facilities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .fac-card{
+    background:#fff;border-radius:16px;padding:32px 22px;text-align:center;
+    border:1px solid var(--line);
+    box-shadow:0 10px 30px -20px rgba(27,42,74,.15);
+    transition:transform .25s;
+  }
+  .fac-card:hover{transform:translateY(-6px);}
+  .fac-card .icon{
+    width:56px;height:56px;border-radius:16px;margin:0 auto 16px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--coral),var(--coral-dark));color:#fff;
+  }
+  .fac-card:nth-child(3n+2) .icon{background:linear-gradient(135deg,var(--teal),var(--teal-dark));}
+  .fac-card:nth-child(3n) .icon{background:linear-gradient(135deg,#7c6cf0,#5a48d6);}
+  .fac-card h4{font-size:15px;color:var(--navy);font-weight:700;margin-bottom:8px;}
+  .fac-card p{font-size:13px;line-height:1.6;color:var(--ink);}
+
+  /* ===== STAGES ===== */
+  .stages-section{padding:90px 0;}
+  .stage-track{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative;}
+  .stage-track::before{
+    content:"";position:absolute;top:26px;left:12%;right:12%;height:2px;
+    background:repeating-linear-gradient(90deg,#c9dde1 0 10px,transparent 10px 20px);
+    z-index:0;
+  }
+  .stage-card{position:relative;z-index:1;text-align:center;}
+  .stage-badge{
+    width:54px;height:54px;border-radius:50%;background:#fff;border:3px solid var(--teal);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
+    font-weight:800;color:var(--teal-dark);font-size:15px;
+  }
+  .stage-card h4{font-size:15px;color:var(--navy);font-weight:700;margin-bottom:6px;}
+  .stage-card p{font-size:12.5px;color:var(--ink);}
+
+  /* ===== GARDEN BANNER ===== */
+  .garden-banner{
+    padding:90px 0;background:linear-gradient(120deg,#e2f6f8,#f6f9fb);
+  }
+  .garden-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .garden-grid h3{font-size:28px;color:var(--navy);font-weight:800;margin-bottom:16px;}
+  .garden-grid p{font-size:15px;line-height:1.8;margin-bottom:24px;max-width:440px;}
+  .garden-art{height:320px;border-radius:20px;overflow:hidden;}
+  .garden-art svg{width:100%;height:100%;}
+
+  /* ===== FAQ ===== */
+  .faq-section{padding:90px 0;background:#fff;}
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{
+    border-bottom:1px solid var(--line);padding:22px 0;cursor:pointer;
+  }
+  .faq-item .faq-q{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:16px;font-weight:700;color:var(--navy);
+  }
+  .faq-item .faq-q .plus{
+    width:26px;height:26px;border-radius:50%;background:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;color:var(--teal-dark);flex-shrink:0;transition:transform .3s;
+  }
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);background:var(--coral);color:#fff;}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .35s ease;
+    font-size:14.5px;line-height:1.7;color:var(--ink);
+  }
+  .faq-item.open .faq-a{max-height:200px;padding-top:14px;}
+
+  /* ===== COUNSELLORS ===== */
+  .counsel-section{padding:90px 0;background:var(--cream);}
+  .counsel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .counsel-card{
+    background:#fff;border-radius:16px;padding:28px 24px;
+    border:1px solid var(--line);
+  }
+  .counsel-avatar{
+    width:60px;height:60px;border-radius:50%;margin-bottom:16px;
+    overflow:hidden;
+  }
+  .counsel-avatar img{width:100%;height:100%;object-fit:cover;}
+  .counsel-card h4{font-size:15.5px;color:var(--navy);font-weight:700;margin-bottom:4px;}
+  .counsel-card .role{font-size:12.5px;color:var(--coral-dark);font-weight:700;margin-bottom:12px;}
+  .counsel-card p{font-size:13.5px;line-height:1.7;color:var(--ink);}
+
+  @media(max-width:860px){
+    nav{display:none;}
+    .slide{grid-template-columns:1fr;}
+    .slide-art{order:-1;height:260px;}
+    .slide-text h1{font-size:30px;}
+    .feature-row{grid-template-columns:1fr 1fr;}
+    .split-section .container{grid-template-columns:1fr;}
+    .split-section.reverse .container{direction:ltr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .carousel{min-height:640px;}
+    .about-grid{grid-template-columns:1fr;}
+    .stat-row{grid-template-columns:repeat(3,1fr);}
+    .facilities-grid{grid-template-columns:1fr 1fr;}
+    .stage-track{grid-template-columns:1fr 1fr;row-gap:36px;}
+    .stage-track::before{display:none;}
+    .garden-grid{grid-template-columns:1fr;}
+    .garden-art{order:-1;}
+    .counsel-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav-wrap">
+    <div class="logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3FeDA72Fvn_-4BoIcKY1UW6SNeQjBLWWynqaEqRxdlA&s=10" alt="School Logo" style="width:38px;height:48px;border-radius:10px;"> RADHA KRISHNA PUBLIC SCHOOL</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#stages">Classes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="carousel" id="carousel">
+
+    <div class="slide active">
+      <div class="slide-text">
+        <span class="eyebrow">ADMISSIONS OPEN 2026-27</span>
+        <h1>Where every child<br>begins a bright<br>future</h1>
+        <p>A nurturing campus in Panipat that blends strong academics, values and joyful learning for every stage of your child's growth.</p>
+        <a href="#admissions" class="btn">Know More</a>
+      </div>
+      <div class="slide-art">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpZ0SDDrZMVkyENleXdHbXIHHEHxioYnOzVpDNrvJ_RT4OIQjcajTY2j4&s=10" alt="School campus" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-text">
+        <span class="eyebrow">CBSE CURRICULUM</span>
+        <h1>Modern classrooms,<br>time-tested<br>values</h1>
+        <p>Smart classrooms, experienced teachers and a curriculum designed to build curiosity, confidence and character.</p>
+        <a href="#academics" class="btn">See Academics</a>
+      </div>
+      <div class="slide-art">
+        <img src="https://plus.unsplash.com/premium_photo-1680807869780-e0876a6f3cd5?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2xhc3Nyb29tfGVufDB8fDB8fHww" alt="Classroom" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-text">
+        <span class="eyebrow">SAFE & CARING CAMPUS</span>
+        <h1>A second home<br>for every<br>student</h1>
+        <p>CCTV monitored campus, trained staff and a warm community that puts your child's safety and happiness first.</p>
+        <a href="#contact" class="btn">Visit Us</a>
+      </div>
+      <div class="slide-art">
+        <img src="https://thearthahschool.com/wp-content/uploads/2026/01/smart-safe-campus-header-e1779358787951.png" alt="Safe campus" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+
+  </div>
+  <div class="carousel-dots" id="dots"></div>
+</section>
+
+<section class="info-strip" id="quicklinks">
+  <div class="container">
+    <h2>A complete school experience<br>built around your child</h2>
+    <p>From playful early learning to disciplined senior years, Radha Krishna Public School gives students a supportive environment to learn, play and grow together.</p>
+
+    <div class="feature-row">
+      <div class="feature-card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 4h16v12H5.17L4 17.17V4z"/></svg>
+        </div>
+        <h4>Talk to Us</h4>
+        <a href="#contact">Call or Visit</a>
+      </div>
+      <div class="feature-card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 3h20v14H6l-4 4V3z"/></svg>
+        </div>
+        <h4>Take a Campus Tour</h4>
+        <a href="#contact">Book a Visit</a>
+      </div>
+      <div class="feature-card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15Z"/></svg>
+        </div>
+        <h4>Explore Academics</h4>
+        <a href="#academics">View Curriculum</a>
+      </div>
+      <div class="feature-card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+        </div>
+        <h4>Start Admission</h4>
+        <a href="#admissions">Apply Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="container about-grid">
+    <div class="art-panel" style="height:340px;padding:0;overflow:hidden;">
+      <img src="https://c8.alamy.com/comp/EFDEX8/indian-school-students-friends-group-EFDEX8.jpg" alt="Students at school" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
+    </div>
+    <div>
+      <h3>About Radha Krishna Public School</h3>
+      <p>Located on Jattal Road, Sondhapur, Panipat, Radha Krishna Public School has been a trusted name in quality education, shaping confident, disciplined and curious learners since its founding.</p>
+      <p>We believe every child learns differently, so our teachers combine structured academics with sports, arts and hands-on activities to help students discover their strengths.</p>
+      <div class="stat-row">
+        <div class="stat-block"><strong>20+</strong><span>Years of Excellence</span></div>
+        <div class="stat-block"><strong>50+</strong><span>Expert Teachers</span></div>
+        <div class="stat-block"><strong>1500+</strong><span>Happy Students</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facilities-section" id="facilities">
+  <div class="container">
+    <div class="section-head">
+      <h2>Facilities that support every child</h2>
+      <p>A campus equipped for learning, play and everyday comfort — designed to give students everything they need to thrive.</p>
+    </div>
+    <div class="facilities-grid">
+      <div class="fac-card">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15Z"/></svg></div>
+        <h4>Library</h4>
+        <p>A well-stocked reading room to build a lifelong love of books.</p>
+      </div>
+      <div class="fac-card">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+        <h4>Smart Classrooms</h4>
+        <p>Digital boards and interactive tools for engaging lessons.</p>
+      </div>
+      <div class="fac-card">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 8h16M4 8l1 12h14l1-12M9 8V5a3 3 0 0 1 6 0v3"/></svg></div>
+        <h4>Science Labs</h4>
+        <p>Hands-on labs for physics, chemistry and biology experiments.</p>
+      </div>
+      <div class="fac-card">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="11" width="18" height="8" rx="2"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/><path d="M5 11V7a2 2 0 0 1 2-2h5l4 6"/></svg></div>
+        <h4>School Bus Transport</h4>
+        <p>Safe, GPS-tracked buses covering all major routes in Panipat.</p>
+      </div>
+      <div class="fac-card">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg></div>
+        <h4>Sports Ground</h4>
+        <p>Open playgrounds for athletics, cricket, football and yoga.</p>
+      </div>
+      <div class="fac-card">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2s7 5 7 11a7 7 0 0 1-14 0c0-6 7-11 7-11Z"/></svg></div>
+        <h4>Garden & Play Area</h4>
+        <p>Green, shaded spaces for outdoor play and nature learning.</p>
+      </div>
+      <div class="fac-card">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 21c-4-3-8-6-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 5-4 8-8 11Z"/></svg></div>
+        <h4>Medical Room</h4>
+        <p>On-campus first aid and a trained attendant on call.</p>
+      </div>
+      <div class="fac-card">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 10h18M3 6h18M7 14h4m-4 4h8"/></svg></div>
+        <h4>Cafeteria</h4>
+        <p>Hygienic, nutritious meals and snacks through the school day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="split-section" id="academics">
+  <div class="container">
+    <div>
+      <div class="step-num">1</div>
+      <h3>Academics that build strong foundations</h3>
+      <p>A structured curriculum from Nursery to Senior Secondary that balances academics with sports, arts and life skills, guided by dedicated and caring teachers.</p>
+      <a href="#admissions" class="btn outline">View Curriculum</a>
+    </div>
+    <div class="art-panel" style="padding:0;overflow:hidden;">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH3U5qwjfZOq0XVRgG8q2PENugqW6zbpCNCuigbNEYUg&s=10" alt="Academics" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
+    </div>
+  </div>
+</section>
+
+<section class="split-section reverse" style="background:var(--cream)">
+  <div class="container">
+    <div>
+      <div class="step-num">2</div>
+      <h3>Easy admissions, simple process</h3>
+      <p>A guided admission process with a personal campus tour, so every family can make an informed and confident choice for their child.</p>
+      <a href="#admissions" class="btn outline">Start Admission</a>
+    </div>
+    <div class="art-panel" style="padding:0;overflow:hidden;">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRACR-o_7ssTI-sM4I5nyyOljOqGh6mQRgf367jXQVZlxaJMtEodtepAxo&s=10" alt="Admissions" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
+    </div>
+  </div>
+</section>
+
+<section class="split-section" id="admissions">
+  <div class="container">
+    <div>
+      <div class="step-num">3</div>
+      <h3>A campus that feels like home</h3>
+      <p>Bright classrooms, a safe playground and caring staff create an environment where children feel comfortable, confident and happy to learn every day.</p>
+      <a href="#contact" class="btn outline">Plan a Visit</a>
+    </div>
+    <div class="art-panel" style="padding:0;overflow:hidden;">
+      <img src="https://www.billabonghighschool.com/blogs/wp-content/uploads/2026/04/What-Is-an-International-School.webp" alt="Campus" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
+    </div>
+  </div>
+</section>
+
+<section class="stages-section" id="stages">
+  <div class="container">
+    <div class="section-head">
+      <h2>A stage for every age</h2>
+      <p>Our curriculum is structured across four stages, each designed around how children learn and grow at that age.</p>
+    </div>
+    <div class="stage-track">
+      <div class="stage-card">
+        <div class="stage-badge">PP</div>
+        <h4>Pre-Primary</h4>
+        <p>Nursery – KG · Play-based learning</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-badge">PR</div>
+        <h4>Primary</h4>
+        <p>Grades 1 – 5 · Foundational skills</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-badge">MS</div>
+        <h4>Middle School</h4>
+        <p>Grades 6 – 8 · Concept building</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-badge">SS</div>
+        <h4>Senior Secondary</h4>
+        <p>Grades 9 – 12 · Exam readiness</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="garden-banner">
+  <div class="container garden-grid">
+    <div>
+      <div class="step-num">4</div>
+      <h3>Gardens and open spaces to play, explore and learn</h3>
+      <p>Beyond the classroom, our green campus gives children room to run, play and connect with nature — an everyday part of a healthy school life.</p>
+      <a href="#contact" class="btn outline">Visit Our Campus</a>
+    </div>
+    <div class="garden-art">
+      <img src="https://media.istockphoto.com/id/1390337241/photo/full-length-shot-of-an-attractive-young-woman-and-two-adorable-little-kids-working-on-a-farm.webp?a=1&b=1&s=612x612&w=0&k=20&c=dQMsWtTBQ3IAqv-2h7npqf43_jIF78F8-rHcjbDdReo=" alt="School garden" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <h2>Frequently asked questions</h2>
+      <p>Answers to the questions parents ask us most often.</p>
+    </div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item open">
+        <div class="faq-q"><span>What classes does the school offer?</span><span class="plus">+</span></div>
+        <div class="faq-a">We offer classes from Nursery to Grade 12, following the CBSE curriculum across Pre-Primary, Primary, Middle and Senior Secondary stages.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Does the school provide bus transport?</span><span class="plus">+</span></div>
+        <div class="faq-a">Yes, we run GPS-tracked school buses on routes covering major areas of Panipat, with an attendant on every bus.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>How do I apply for admission?</span><span class="plus">+</span></div>
+        <div class="faq-a">You can visit our campus on Jattal Road, Sondhapur, or call 9416182626 to begin the admission process and schedule a campus tour.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Is counselling support available for students?</span><span class="plus">+</span></div>
+        <div class="faq-a">Yes, our in-house counsellors support students with academic guidance, career planning and emotional wellbeing.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>What facilities are available on campus?</span><span class="plus">+</span></div>
+        <div class="faq-a">Our campus includes a library, smart classrooms, science labs, sports grounds, gardens, a medical room and a cafeteria.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="counsel-section" id="consultants">
+  <div class="container">
+    <div class="section-head">
+      <h2>Our academic consultants & counsellors</h2>
+      <p>Dedicated professionals guiding students and parents through academics, admissions and wellbeing.</p>
+    </div>
+    <div class="counsel-grid">
+      <div class="counsel-card">
+        <div class="counsel-avatar"><img src="https://img.magnific.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg" alt="Anita Sharma"></div>
+        <h4>Anita Sharma</h4>
+        <div class="role">Admissions Consultant</div>
+        <p>Guides families through the admission process and helps choose the right stage and section for their child.</p>
+      </div>
+      <div class="counsel-card">
+        <div class="counsel-avatar"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdWvCzDx5g2ZTRBMKISWW2LJ9_KDLMrmNF8K1RxlTgNA&s=10" alt="Rakesh Kumar"></div>
+        <h4>Rakesh Kumar</h4>
+        <div class="role">Academic Counsellor</div>
+        <p>Works with students on study planning, subject selection and exam preparation strategies.</p>
+      </div>
+      <div class="counsel-card">
+        <div class="counsel-avatar"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9YPTJJr5mZVPYRqrd59f4hnXpwpn1B2gJNSwzq2C6qg&s=10" alt="Priya Mehta"></div>
+        <h4>Rriya Mehta</h4>
+        <div class="role">Student Wellbeing Counsellor</div>
+        <p>Supports students' emotional wellbeing and helps them navigate school life with confidence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Give your child the right start</h2>
+    <p>Schedule a campus visit and see why families across Panipat trust Radha Krishna Public School.</p>
+    <a href="#contact" class="btn">Book a Campus Tour</a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="flogo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3FeDA72Fvn_-4BoIcKY1UW6SNeQjBLWWynqaEqRxdlA&s=10" alt="School Logo" style="width:32px;height:32px;border-radius:8px;"> RADHA KRISHNA PUBLIC SCHOOL</div>
+        <p>Jattal Road, Sondhapur, Panipat, Haryana 132103</p>
+        <p style="margin-top:8px;">Phone: 9416182626</p>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#facilities">Facilities</a></li>
+          <li><a href="#stages">Classes</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#consultants">Counsellors</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>Jattal Road, Sondhapur</li>
+          <li>Panipat, Haryana 132103</li>
+          <li>9416182626</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <span>© 2026 Radha Krishna Public School. All rights reserved.</span>
+      <span>Panipat, Haryana</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dotsWrap = document.getElementById('dots');
+  let current = 0;
+  let timer;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    if(i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = dotsWrap.querySelectorAll('button');
+
+  function goTo(index){
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    resetTimer();
+  }
+
+  function next(){
+    goTo((current + 1) % slides.length);
+  }
+
+  function resetTimer(){
+    clearInterval(timer);
+    timer = setInterval(next, 4000);
+  }
+
+  resetTimer();
+
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqItems.forEach(f => f.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
