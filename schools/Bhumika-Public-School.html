@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhumika Public School — Panipat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --paper:#f7f4ee;
+    --ink:#152241;
+    --ink-soft:#525a6b;
+    --saffron:#e7a33e;
+    --saffron-deep:#c8811e;
+    --green:#3b6b4e;
+    --green-soft:#e7f0e9;
+    --line:#e6e1d6;
+    --radius:6px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.12;
+    letter-spacing:-0.01em;
+  }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  section{position:relative;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid transparent;
+    transition:border-color .25s ease, box-shadow .25s ease;
+  }
+  header.scrolled{
+    border-bottom:1px solid var(--line);
+    box-shadow:0 2px 14px rgba(21,34,65,0.05);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:82px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .brand-mark{
+    width:44px;height:44px;
+    border-radius:50%;
+    background:var(--ink);
+    color:var(--saffron);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:20px;
+    flex-shrink:0;
+  }
+  .brand-text .name{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:17px;
+    line-height:1.2;
+  }
+  .brand-text .place{
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:36px;
+  }
+  .nav-links a{
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    position:relative;
+    padding:4px 0;
+  }
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{
+    display:flex;align-items:center;gap:18px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:600;
+    border:1px solid transparent;
+    transition:transform .18s ease, background .18s ease, border-color .18s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--white);
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-outline{
+    border-color:var(--ink);
+    color:var(--ink);
+  }
+  .btn-outline:hover{background:var(--ink);color:var(--white);}
+  .btn-ghost{color:var(--ink-soft);}
+
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;border:none;cursor:pointer;
+    padding:6px;
+  }
+  .menu-toggle span{
+    width:22px;height:2px;background:var(--ink);border-radius:2px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 70px;
+    background:
+      radial-gradient(circle at 88% 8%, rgba(231,163,62,0.10), transparent 45%),
+      var(--white);
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.05fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-copy .kicker{
+    font-size:14.5px;
+    color:var(--green);
+    font-weight:600;
+    margin-bottom:18px;
+    display:flex;align-items:center;gap:9px;
+  }
+  .hero-copy .kicker::before{
+    content:'';
+    width:22px;height:1px;background:var(--green);
+    display:inline-block;
+  }
+  .hero-copy h1{
+    font-size:clamp(34px,4.6vw,54px);
+    max-width:12.5ch;
+    margin-bottom:22px;
+  }
+  .hero-copy h1 em{
+    font-style:normal;
+    color:var(--saffron-deep);
+  }
+  .hero-copy p{
+    font-size:17.5px;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin-bottom:34px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:38px;
+  }
+  .hero-meta{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    padding-top:26px;
+    border-top:1px solid var(--line);
+  }
+  .hero-meta div{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    max-width:220px;
+  }
+  .hero-meta svg{flex-shrink:0;margin-top:2px;color:var(--ink);}
+  .hero-meta strong{display:block;color:var(--ink);font-weight:600;font-size:14px;margin-bottom:2px;}
+
+  .hero-art{
+    position:relative;
+    display:flex;
+    justify-content:center;
+  }
+  .hero-art svg{width:100%;height:auto;max-width:440px;}
+
+  /* ---------- FACT STRIP ---------- */
+  .fact-strip{
+    background:var(--ink);
+    color:var(--white);
+  }
+  .fact-strip .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    padding:26px 32px;
+    gap:20px 48px;
+    justify-content:space-between;
+  }
+  .fact-strip .fact{
+    font-size:13.5px;
+    color:rgba(255,255,255,0.75);
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+  .fact-strip .fact strong{
+    color:var(--white);
+    font-weight:600;
+    font-size:14px;
+  }
+  .fact-strip svg{color:var(--saffron);flex-shrink:0;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-head{
+    max-width:640px;
+    margin-bottom:52px;
+  }
+  .section-head .tag{
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--green);
+    margin-bottom:14px;
+  }
+  .section-head h2{
+    font-size:clamp(28px,3.4vw,40px);
+    margin-bottom:16px;
+  }
+  .section-head p{
+    color:var(--ink-soft);
+    font-size:16.5px;
+    max-width:52ch;
+  }
+  .section-pad{padding:96px 0;}
+  .bg-paper{background:var(--paper);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .about-art{
+    position:relative;
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--green-soft);
+    aspect-ratio:4/5;
+    display:flex;
+    align-items:flex-end;
+    padding:26px;
+  }
+  .about-art svg{width:100%;}
+  .about-copy h2{
+    font-size:clamp(26px,3vw,36px);
+    margin-bottom:20px;
+    max-width:14ch;
+  }
+  .about-copy p{
+    color:var(--ink-soft);
+    font-size:16px;
+    margin-bottom:18px;
+    max-width:52ch;
+  }
+  .about-list{
+    margin-top:28px;
+    display:grid;
+    gap:16px;
+  }
+  .about-list li{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .about-list svg{flex-shrink:0;margin-top:3px;color:var(--saffron-deep);}
+
+  /* ---------- FEATURES ---------- */
+  .feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .feature{
+    background:var(--white);
+    padding:36px 30px;
+    border-top:3px solid var(--c, var(--saffron));
+  }
+  .feature .icon{
+    width:42px;height:42px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:color-mix(in srgb, var(--c, var(--saffron)) 14%, white);
+    color:var(--c, var(--saffron));
+    margin-bottom:20px;
+  }
+  .feature h3{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:16.5px;
+    margin-bottom:10px;
+  }
+  .feature p{
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- ACADEMICS ---------- */
+  .stages{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .stage{
+    padding:34px 28px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    position:relative;
+  }
+  .stage .stage-num{
+    font-family:'Fraunces',serif;
+    font-size:15px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+    display:block;
+  }
+  .stage h3{
+    font-size:21px;
+    margin-bottom:10px;
+  }
+  .stage p{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  .stage-tag{
+    display:inline-block;
+    font-size:12.5px;
+    font-weight:600;
+    padding:5px 12px;
+    border-radius:999px;
+    background:var(--green-soft);
+    color:var(--green);
+  }
+  .stage:nth-child(2) .stage-tag{background:#fbeed9;color:var(--saffron-deep);}
+  .stage:nth-child(3) .stage-tag{background:#e9eef7;color:#2c477a;}
+
+  /* ---------- CAMPUS LIFE ---------- */
+  .campus-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:170px;
+    gap:14px;
+  }
+  .campus-grid figure{
+    position:relative;
+    margin:0;
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .campus-grid img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .campus-grid figcaption{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    padding:16px;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--white);
+    background:linear-gradient(180deg, transparent, rgba(0,0,0,0.55));
+  }
+  .c1{grid-column:span 2;grid-row:span 2;}
+  .c5{grid-column:span 2;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .testi{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px 28px;
+  }
+  .testi svg{color:var(--saffron);margin-bottom:16px;}
+  .testi p{
+    font-size:15px;
+    color:var(--ink);
+    margin-bottom:20px;
+  }
+  .testi .who{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+
+  /* ---------- ADMISSIONS BANNER ---------- */
+  .admit-banner{
+    background:var(--ink);
+    color:var(--white);
+    border-radius:var(--radius);
+    padding:56px 52px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+  .admit-banner h2{
+    font-size:clamp(24px,3vw,32px);
+    max-width:16ch;
+    color:var(--white);
+  }
+  .admit-banner p{
+    color:rgba(255,255,255,0.7);
+    margin-top:12px;
+    max-width:40ch;
+    font-size:15px;
+  }
+  .admit-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .admit-banner .btn-primary{background:var(--saffron);color:var(--ink);}
+  .admit-banner .btn-outline{border-color:rgba(255,255,255,0.4);color:var(--white);}
+  .admit-banner .btn-outline:hover{background:var(--white);color:var(--ink);}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .contact-info{
+    padding:48px;
+    background:var(--white);
+  }
+  .contact-info h3{
+    font-size:24px;
+    margin-bottom:24px;
+  }
+  .contact-row{
+    display:flex;
+    gap:16px;
+    padding:18px 0;
+    border-top:1px solid var(--line);
+  }
+  .contact-row:first-of-type{border-top:none;}
+  .contact-row svg{flex-shrink:0;color:var(--saffron-deep);margin-top:2px;}
+  .contact-row .label{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-bottom:3px;
+  }
+  .contact-row .value{
+    font-size:15.5px;
+    font-weight:500;
+  }
+  .contact-row a.value:hover{color:var(--saffron-deep);}
+  .map-frame{
+    min-height:380px;
+    background:var(--paper);
+  }
+  .map-frame iframe{
+    width:100%;height:100%;border:0;display:block;min-height:380px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    padding:56px 0 28px;
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:40px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:24px;
+  }
+  .footer-brand p{
+    color:var(--ink-soft);
+    font-size:14.5px;
+    margin-top:14px;
+    max-width:34ch;
+  }
+  .footer-col h4{
+    font-size:13.5px;
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .footer-col ul{display:grid;gap:11px;}
+  .footer-col a{font-size:14px;color:var(--ink-soft);}
+  .footer-col a:hover{color:var(--ink);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .nav-links{display:none;}
+    .menu-toggle{display:flex;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-art{order:-1;max-width:280px;margin:0 auto;}
+    .about-grid{grid-template-columns:1fr;}
+    .feature-grid{grid-template-columns:1fr 1fr;}
+    .stages{grid-template-columns:1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    .campus-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;}
+    .c1{grid-column:span 2;grid-row:span 1;}
+    .c5{grid-column:span 2;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 20px;}
+    .feature-grid{grid-template-columns:1fr;}
+    .admit-banner{padding:36px 26px;}
+    .hero{padding:56px 0 48px;}
+    .section-pad{padding:64px 0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;animation:none !important;}
+  }
+
+  /* hero entrance (single orchestrated moment) */
+  .reveal{opacity:0;transform:translateY(14px);animation:rise .7s ease forwards;}
+  .reveal:nth-child(1){animation-delay:.05s;}
+  .reveal:nth-child(2){animation-delay:.15s;}
+  .reveal:nth-child(3){animation-delay:.25s;}
+  @keyframes rise{to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <nav class="wrap">
+    <div class="brand">
+      <div class="brand-mark">B</div>
+      <div class="brand-text">
+        <div class="name">Bhumika Public School</div>
+        <div class="place">Hari Nagar, Panipat</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#academics">Academics</a>
+      <a href="#campus">Campus Life</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:+919813430034" class="btn btn-outline" style="display:none" id="desktop-call">Call School</a>
+      <a href="tel:+919813430034" class="btn btn-primary">Call 098134 30034</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div id="mobileMenu" style="display:none;border-top:1px solid var(--line);background:var(--white);">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:4px;padding:18px 32px 24px;">
+      <a href="#about" style="padding:10px 0;font-weight:500;">About</a>
+      <a href="#academics" style="padding:10px 0;font-weight:500;">Academics</a>
+      <a href="#campus" style="padding:10px 0;font-weight:500;">Campus Life</a>
+      <a href="#admissions" style="padding:10px 0;font-weight:500;">Admissions</a>
+      <a href="#contact" style="padding:10px 0;font-weight:500;">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="kicker reveal">Nursery to Middle School · Panipat, Haryana</div>
+      <h1 class="reveal">Where Panipat's children learn to <em>think for themselves</em></h1>
+      <p class="reveal">Bhumika Public School is a close-knit neighbourhood school in Hari Nagar, built on steady academics, attentive teachers, and a campus small enough that no child goes unnoticed.</p>
+      <div class="hero-actions reveal">
+        <a href="tel:+919813430034" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call for Admissions
+        </a>
+        <a href="#contact" class="btn btn-outline">Visit the Campus</a>
+      </div>
+      <!-- <div class="hero-meta reveal">
+        <div>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><strong>Campus address</strong>Industrial Area Phase 2, Hari Nagar, Panipat Taraf Ansar, Haryana 132103</div>
+        </div>
+        <div>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <div><strong>Office hours</strong>Monday – Saturday, school working days</div>
+        </div>
+      </div> -->
+    </div>
+    <div class="hero-art">
+      <img src="https://img.magnific.com/free-photo/two-students-studying-together-online-with-laptop-park_1150-4119.jpg?semt=ais_hybrid&w=740&q=80" alt="Bhumika Public School campus — replace with a real photo" style="border-radius:8px;">
+    </div>
+  </div>
+</section>
+
+<!-- ================= FACT STRIP ================= -->
+<div class="fact-strip">
+  <div class="wrap">
+    <div class="fact">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span><strong>Location</strong> — Hari Nagar, Panipat Taraf Ansar, Haryana 132103</span>
+    </div>
+    <div class="fact">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span><strong>Phone</strong> — 098134 30034</span>
+    </div>
+    <div class="fact">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <span><strong>Stages</strong> — Early Years through Middle School</span>
+    </div>
+    <div class="fact">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span><strong>Hours</strong> — Mon–Sat, during school terms</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section class="section-pad" id="about">
+  <div class="wrap about-grid">
+    <div class="about-art">
+      <img src="https://images.unsplash.com/photo-1719159381916-062fa9f435a6?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW5kaWFuJTIwY2xhc3Nyb29tfGVufDB8fDB8fHww" alt="Classroom at Bhumika Public School — replace with a real photo" style="border-radius:6px;width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="about-copy">
+      <div class="section-head" style="margin-bottom:0;">
+        <div class="tag">About Bhumika Public School</div>
+        <h2>Small enough to know every child by name</h2>
+        <p>We started with a simple idea: young children learn best when their teachers actually know them — their pace, their curiosity, their quiet strengths. That idea still shapes how every classroom at Bhumika runs today.</p>
+        <p>Our campus in Hari Nagar keeps class sizes manageable and staff involved beyond the timetable, so learning stays personal rather than procedural.</p>
+      </div>
+      <ul class="about-list">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Focused academics from the early years through middle school
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Teachers who track each child's progress individually
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          A safe, easily-supervised neighbourhood campus
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section class="section-pad bg-paper">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Why families choose us</div>
+      <h2>What a Bhumika education looks like day to day</h2>
+      <p>Every choice on our campus, from class size to how the day is scheduled, is made to keep children engaged rather than just occupied.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature" style="--c:var(--saffron-deep)">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <h3>Attentive teaching</h3>
+        <p>Teachers who stay with a subject until it's understood, not just covered.</p>
+      </div>
+      <div class="feature" style="--c:var(--green)">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg></div>
+        <h3>Safe, supervised campus</h3>
+        <p>A compact, gated campus where staff can see and reach every classroom quickly.</p>
+      </div>
+      <div class="feature" style="--c:#2c477a">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></div>
+        <h3>Individual attention</h3>
+        <p>Manageable class sizes so quieter students aren't left behind the loudest ones.</p>
+      </div>
+      <div class="feature" style="--c:var(--saffron-deep)">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+        <h3>Sports & activity time</h3>
+        <p>Daily physical activity built into the timetable, not treated as an extra.</p>
+      </div>
+      <div class="feature" style="--c:var(--green)">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div>
+        <h3>Steady communication</h3>
+        <p>Parents kept in the loop on progress, not just at report card time.</p>
+      </div>
+      <div class="feature" style="--c:#2c477a">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5L12 2z"/></svg></div>
+        <h3>Values alongside academics</h3>
+        <p>Discipline, courtesy, and responsibility are taught as deliberately as maths.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACADEMICS ================= -->
+<section class="section-pad" id="academics">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Academics</div>
+      <h2>Three stages, one steady progression</h2>
+      <p>Each stage builds directly on the last, so children move up with the habits and confidence the next classroom expects of them.</p>
+    </div>
+    <div class="stages">
+      <div class="stage">
+        <span class="stage-num">Stage One</span>
+        <h3>Early Years</h3>
+        <p>Play-led learning that builds language, number sense, and the routines of a classroom.</p>
+        <span class="stage-tag">Foundational</span>
+      </div>
+      <div class="stage">
+        <span class="stage-num">Stage Two</span>
+        <h3>Primary Years</h3>
+        <p>Core subjects taught with regular practice and feedback, alongside art, activity, and reading time.</p>
+        <span class="stage-tag">Building</span>
+      </div>
+      <div class="stage">
+        <span class="stage-num">Stage Three</span>
+        <h3>Middle Years</h3>
+        <p>More independent study habits, with subject teachers preparing students for the years ahead.</p>
+        <span class="stage-tag">Advancing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CAMPUS LIFE ================= -->
+<section class="section-pad bg-paper" id="campus">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Campus life</div>
+      <h2>A day at Bhumika</h2>
+      <p>Classrooms, playtime, and everything between — a glimpse of how the campus is actually used.</p>
+    </div>
+    <div class="campus-grid">
+      <figure class="c1">
+        <img src="https://i0.wp.com/apeejay.news/wp-content/uploads/2025/07/180725-Assembly-MT2.jpg?resize=740%2C494&ssl=1" alt="Morning assembly — replace with a real school photo">
+        <figcaption>Morning assembly</figcaption>
+      </figure>
+      <figure class="c2">
+        <img src="https://i0.wp.com/corwin-connect.com/wp-content/uploads/2019/10/qtq80-7qFI8D.jpeg?fit=1200%2C948&ssl=1" alt="Classroom time — replace with a real school photo">
+        <figcaption>Classroom time</figcaption>
+      </figure>
+      <figure class="c3">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh3C2K9QXzEyLTANpShxCv9ARlzWzMoHr5ombLJDQSQ_3lxWiCiJzC6NY&s=10" alt="Library corner — replace with a real school photo">
+        <figcaption>Library corner</figcaption>
+      </figure>
+      <figure class="c4">
+        <img src="https://i0.wp.com/sixthelement.edu.in/wp-content/uploads/2023/02/Play-Based-Learning-Education.jpg?fit=800%2C800&ssl=1" alt="Art and craft — replace with a real school photo">
+        <figcaption>Art & craft</figcaption>
+      </figure>
+      <figure class="c5">
+        <img src="https://www.blueimp.com/wp-content/uploads/2025/10/Image-1-1024x513.jpg" alt="Playground and sports hour — replace with a real school photo">
+        <figcaption>Playground & sports hour</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Parents tell us</div>
+      <h2>What it's like from the other side of the gate</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <svg width="26" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 3C5.9 3 3 5.9 3 9.5c0 3.4 2.6 6.1 5.9 6.4-.4 1.8-1.6 3.3-3.4 4.1v1c3.9-.5 6.5-3.4 6.5-7.5V9.5C12 5.9 9.5 3 9.5 3zm11 0c-3.6 0-6.5 2.9-6.5 6.5 0 3.4 2.6 6.1 5.9 6.4-.4 1.8-1.6 3.3-3.4 4.1v1c3.9-.5 6.5-3.4 6.5-7.5V9.5C23 5.9 20.5 3 20.5 3z"/></svg>
+        <p>My daughter used to dread school. A few months into Nursery here, she's the one reminding me not to be late.</p>
+        <div class="who">A Bhumika parent, Hari Nagar</div>
+      </div>
+      <div class="testi">
+        <svg width="26" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 3C5.9 3 3 5.9 3 9.5c0 3.4 2.6 6.1 5.9 6.4-.4 1.8-1.6 3.3-3.4 4.1v1c3.9-.5 6.5-3.4 6.5-7.5V9.5C12 5.9 9.5 3 9.5 3zm11 0c-3.6 0-6.5 2.9-6.5 6.5 0 3.4 2.6 6.1 5.9 6.4-.4 1.8-1.6 3.3-3.4 4.1v1c3.9-.5 6.5-3.4 6.5-7.5V9.5C23 5.9 20.5 3 20.5 3z"/></svg>
+        <p>What I appreciate most is that teachers actually call when something's off — not just at exam time.</p>
+        <div class="who">Parent, Primary section</div>
+      </div>
+      <div class="testi">
+        <svg width="26" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 3C5.9 3 3 5.9 3 9.5c0 3.4 2.6 6.1 5.9 6.4-.4 1.8-1.6 3.3-3.4 4.1v1c3.9-.5 6.5-3.4 6.5-7.5V9.5C12 5.9 9.5 3 9.5 3zm11 0c-3.6 0-6.5 2.9-6.5 6.5 0 3.4 2.6 6.1 5.9 6.4-.4 1.8-1.6 3.3-3.4 4.1v1c3.9-.5 6.5-3.4 6.5-7.5V9.5C23 5.9 20.5 3 20.5 3z"/></svg>
+        <p>Small campus, but nothing feels rushed. My son gets time with his teacher when he actually needs it.</p>
+        <div class="who">Parent, Middle section</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ADMISSIONS ================= -->
+<section class="section-pad" id="admissions">
+  <div class="wrap">
+    <div class="admit-banner">
+      <div>
+        <h2>Admissions are open for the upcoming session</h2>
+        <p>Call the school office to check seat availability, ask about fees, or arrange a campus visit before you decide.</p>
+      </div>
+      <div class="admit-actions">
+        <a href="tel:+919813430034" class="btn btn-primary">Call 098134 30034</a>
+        <a href="#contact" class="btn btn-outline">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section-pad bg-paper" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Visit or call us</div>
+      <h2>Find us in Hari Nagar</h2>
+      <p>The campus office is open on all working school days for admission enquiries and visits.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact details</h3>
+        <div class="contact-row">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <div class="label">Address</div>
+            <div class="value">Industrial Area Phase 2, Hari Nagar,<br>Panipat Taraf Ansar, Haryana 132103</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <div class="label">Phone</div>
+            <a class="value" href="tel:+919813430034">098134 30034</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <div>
+            <div class="label">Office hours</div>
+            <div class="value">Monday – Saturday, on school working days</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8v4h8V3z"/></svg>
+          <div>
+            <div class="label">City</div>
+            <div class="value">Panipat, Haryana</div>
+          </div>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Industrial+Area+Phase+2,+Hari+Nagar,+Panipat+Taraf+Ansar,+Haryana+132103&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-mark">B</div>
+          <div class="brand-text">
+            <div class="name">Bhumika Public School</div>
+            <div class="place">Hari Nagar, Panipat</div>
+          </div>
+        </div>
+        <p>A neighbourhood school in Panipat focused on steady academics and close attention to every child, from the early years through middle school.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#academics">Academics</a></li>
+          <li><a href="#campus">Campus life</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+919813430034">098134 30034</a></li>
+          <li><a href="#contact">Get directions</a></li>
+          <li>Industrial Area Phase 2, Hari Nagar, Panipat 132103</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Bhumika Public School. All rights reserved.</span>
+      <span>Panipat, Haryana</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 8);
+  });
+
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.style.display === 'block';
+    mobileMenu.style.display = isOpen ? 'none' : 'block';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', () => { mobileMenu.style.display = 'none'; });
+  });
+</script>
+</body>
+</html>
