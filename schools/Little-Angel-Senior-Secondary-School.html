@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Angel Senior Secondary School — Bandh, Panipat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#E35B95;
+    --magenta:#E35B95;
+    --purple:#08B1F5;
+    --cyan:#08B1F5;
+    --cyan-deep:#08B1F5;
+    --ink:#201335;
+    --ink-soft:#5B5470;
+    --bg:#FFFFFF;
+    --bg-soft:#FDF3FA;
+    --bg-blue:#F1FBFD;
+    --line:#F0E4EF;
+    --grad-main: linear-gradient(120deg, var(--purple) 0%, var(--magenta) 48%, var(--pink) 100%);
+    --grad-cyan: linear-gradient(120deg, var(--cyan) 0%, var(--cyan-deep) 100%);
+    --shadow: 0 20px 45px -20px rgba(8,177,245,.28);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Baloo 2', sans-serif; line-height:1.15; color:var(--ink);}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  section{position:relative;}
+  .eyebrow-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Baloo 2', sans-serif; font-weight:700; font-size:14px;
+    color:#fff; background:var(--grad-main);
+    padding:7px 18px 8px; border-radius:999px;
+    box-shadow:0 8px 18px -8px rgba(8,177,245,.55);
+  }
+  .eyebrow-tag.cyan{background:var(--grad-cyan); box-shadow:0 8px 18px -8px rgba(24,184,214,.55);}
+  .section-head{max-width:640px; margin-bottom:44px;}
+  .section-head h2{font-size:clamp(30px,4vw,42px); margin-top:14px;}
+  .section-head p{color:var(--ink-soft); font-size:17px; margin-top:12px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Baloo 2', sans-serif; font-weight:700; font-size:16px;
+    padding:14px 26px; border-radius:14px; border:none; cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--grad-main); color:#fff; box-shadow:0 14px 28px -12px rgba(8,177,245,.55);}
+  .btn-outline{background:#fff; color:var(--ink); border:2px solid var(--line); }
+  .btn-outline:hover{border-color:var(--pink); color:var(--pink);}
+  .btn-white{background:#fff; color:var(--purple); box-shadow:0 14px 28px -12px rgba(0,0,0,.25);}
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky; top:0; z-index:200; background:rgba(255,255,255,.9);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1180px; margin:0 auto;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-badge{
+    width:46px; height:46px; border-radius:13px; background:var(--grad-main);
+    display:flex; align-items:center; justify-content:center; color:#fff;
+    font-family:'Baloo 2'; font-weight:800; font-size:19px; flex-shrink:0;
+  }
+  .brand-name{font-family:'Baloo 2'; font-weight:700; font-size:17px; line-height:1.15;}
+  .brand-name span{display:block; font-family:'Inter'; font-weight:500; font-size:11.5px; color:var(--ink-soft); letter-spacing:.02em;}
+  .nav-links{display:flex; align-items:center; gap:30px;}
+  .nav-links a{font-weight:600; font-size:14.5px; color:var(--ink-soft); transition:color .15s;}
+  .nav-links a:hover{color:var(--pink);}
+  .nav-cta{display:flex; align-items:center; gap:12px;}
+  .nav-phone{display:flex; align-items:center; gap:8px; font-weight:700; font-size:14.5px; color:var(--purple);}
+  .burger{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none;}
+  .burger span{width:24px; height:3px; background:var(--ink); border-radius:2px;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative; overflow:hidden; padding:80px 0 0;
+    background:linear-gradient(180deg, var(--bg-soft) 0%, #fff 100%);
+  }
+  .hero-shape{
+    position:absolute; top:-160px; right:-160px; width:560px; height:560px;
+    background:var(--grad-main); border-radius:44% 56% 62% 38% / 45% 40% 60% 55%;
+    opacity:.16; filter:blur(2px);
+  }
+  .hero-shape2{
+    position:absolute; bottom:-120px; left:-120px; width:340px; height:340px;
+    background:var(--grad-cyan); border-radius:50%; opacity:.13;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;
+    position:relative; z-index:2; padding-bottom:70px;
+  }
+  .hero h1{font-size:clamp(38px,5vw,58px); letter-spacing:-.01em; margin:20px 0 20px;}
+  .hero h1 em{font-style:normal; background:var(--grad-main); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero p.lead{font-size:18px; color:var(--ink-soft); max-width:480px; margin-bottom:30px;}
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:38px;}
+  .hero-meta{display:flex; gap:28px; flex-wrap:wrap;}
+  .hero-meta div{display:flex; flex-direction:column;}
+  .hero-meta strong{font-family:'Baloo 2'; font-size:24px; color:var(--purple);}
+  .hero-meta span{font-size:13px; color:var(--ink-soft); font-weight:600;}
+
+  .hero-card{
+    position:relative; border-radius:28px; overflow:hidden; box-shadow:var(--shadow);
+    aspect-ratio:4/4.6; background:var(--grad-main);
+  }
+  .hero-card svg{width:100%; height:100%; display:block;}
+  .hero-ribbon{
+    position:absolute; top:26px; left:-38px; transform:rotate(-40deg);
+    background:#fff; color:var(--purple); font-family:'Baloo 2'; font-weight:700;
+    font-size:14px; padding:8px 46px; box-shadow:0 6px 14px rgba(0,0,0,.12);
+  }
+  .hero-tag-card{
+    position:absolute; left:22px; bottom:22px; right:22px; background:rgba(255,255,255,.95);
+    border-radius:16px; padding:16px 18px; display:flex; align-items:center; gap:12px;
+    backdrop-filter:blur(6px);
+  }
+  .hero-tag-card .dot{width:44px; height:44px; border-radius:12px; background:var(--grad-cyan); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:20px;}
+  .hero-tag-card strong{display:block; font-family:'Baloo 2'; font-size:15px;}
+  .hero-tag-card span{font-size:12.5px; color:var(--ink-soft);}
+
+  .marquee{background:var(--ink); overflow:hidden; padding:13px 0;}
+  .marquee-track{display:flex; gap:60px; white-space:nowrap; animation:scroll 26s linear infinite; width:max-content;}
+  .marquee span{color:#fff; font-family:'Baloo 2'; font-weight:600; font-size:14px; opacity:.85; display:flex; align-items:center; gap:10px;}
+  .marquee span::before{content:"✦"; color:var(--pink);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ===== ABOUT ===== */
+  .about{padding:100px 0; background:#fff;}
+  .about-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:64px; align-items:center;}
+  .about-visual{position:relative;}
+  .about-photo{border-radius:24px; overflow:hidden; box-shadow:var(--shadow);}
+  .about-photo svg{width:100%; display:block;}
+  .about-badge{
+    position:absolute; bottom:-26px; right:-26px; background:#fff; border-radius:20px;
+    box-shadow:0 18px 30px -14px rgba(32,19,53,.25); padding:20px 22px; width:172px;
+    border:1px solid var(--line);
+  }
+  .about-badge strong{font-family:'Baloo 2'; font-size:30px; background:var(--grad-main); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .about-badge span{font-size:12.5px; color:var(--ink-soft); font-weight:600; display:block; margin-top:2px;}
+  .about-copy p{color:var(--ink-soft); font-size:16px; margin:16px 0;}
+  .pillar-list{margin-top:26px; display:grid; gap:16px;}
+  .pillar{display:flex; gap:16px; align-items:flex-start;}
+  .pillar-ic{
+    width:42px; height:42px; border-radius:12px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; color:#fff; font-size:19px;
+    background:var(--grad-main);
+  }
+  .pillar:nth-child(2) .pillar-ic{background:var(--grad-cyan);}
+  .pillar:nth-child(3) .pillar-ic{background:linear-gradient(120deg,var(--pink),var(--purple));}
+  .pillar h4{font-size:16px; margin-bottom:3px;}
+  .pillar p{font-size:14.5px; color:var(--ink-soft); margin:0;}
+
+  /* ===== TOPPERS ===== */
+  .toppers{padding:100px 0; background:var(--bg-soft); position:relative; overflow:hidden;}
+  .toppers::before{
+    content:""; position:absolute; top:-100px; left:50%; transform:translateX(-50%);
+    width:900px; height:280px; background:var(--grad-main); opacity:.08; border-radius:50%;
+  }
+  .topper-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; position:relative; z-index:1;}
+  .topper-card{
+    background:#fff; border-radius:22px; overflow:hidden; box-shadow:0 16px 32px -20px rgba(32,19,53,.22);
+    transition:transform .2s ease;
+  }
+  .topper-card:hover{transform:translateY(-6px);}
+  .topper-photo{
+    aspect-ratio:1/1; position:relative; background:var(--grad-main);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .topper-card:nth-child(2) .topper-photo{background:var(--grad-cyan);}
+  .topper-card:nth-child(3) .topper-photo{background:linear-gradient(120deg,var(--pink),var(--purple));}
+  .topper-card:nth-child(4) .topper-photo{background:linear-gradient(120deg,var(--cyan),var(--magenta));}
+  .topper-photo .initials{font-family:'Baloo 2'; font-weight:800; font-size:44px; color:#fff; opacity:.92;}
+  .topper-rank{
+    position:absolute; top:12px; left:12px; background:#fff; color:var(--purple);
+    font-family:'Baloo 2'; font-weight:800; font-size:13px; width:30px; height:30px;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+  }
+  .topper-body{padding:18px 18px 20px;}
+  .topper-body h4{font-size:17px; margin-bottom:2px;}
+  .topper-body .stream{font-size:12.5px; color:var(--ink-soft); font-weight:600; margin-bottom:10px;}
+  .topper-score{display:flex; align-items:baseline; gap:6px;}
+  .topper-score strong{font-family:'Baloo 2'; font-size:26px; color:var(--pink);}
+  .topper-score span{font-size:12.5px; color:var(--ink-soft); font-weight:600;}
+  .toppers-note{
+    margin-top:26px; font-size:13.5px; color:var(--ink-soft); background:#fff; border:1px dashed #E4B8DE;
+    padding:14px 18px; border-radius:14px; position:relative; z-index:1;
+  }
+  .toppers-note strong{color:var(--pink);}
+
+  /* ===== ACTIVITIES ===== */
+  .activities{padding:100px 0;}
+  .activity-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .activity-card{
+    border-radius:22px; padding:30px 26px; background:var(--bg-soft); border:1px solid var(--line);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .activity-card:hover{transform:translateY(-5px); box-shadow:0 20px 34px -20px rgba(32,19,53,.28);}
+  .activity-ic{
+    width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    font-size:24px; color:#fff; margin-bottom:18px; background:var(--grad-main);
+  }
+  .activity-card:nth-child(2n) .activity-ic{background:var(--grad-cyan);}
+  .activity-card:nth-child(3n) .activity-ic{background:linear-gradient(120deg,var(--pink),var(--purple));}
+  .activity-card h4{font-size:18px; margin-bottom:8px;}
+  .activity-card p{font-size:14.5px; color:var(--ink-soft);}
+
+  /* ===== CONSULTATION / ADMISSIONS ===== */
+  .consult{padding:100px 0; background:var(--ink); color:#fff; position:relative; overflow:hidden;}
+  .consult::before{
+    content:""; position:absolute; top:-200px; right:-160px; width:520px; height:520px;
+    background:var(--grad-main); opacity:.35; border-radius:50%; filter:blur(40px);
+  }
+  .consult-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; position:relative; z-index:1;}
+  .consult h2{color:#fff;}
+  .consult .section-head p{color:#C9C2DE;}
+  .step-list{display:grid; gap:22px; margin-top:6px;}
+  .step{display:flex; gap:18px; align-items:flex-start;}
+  .step-num{
+    width:38px; height:38px; border-radius:50%; background:var(--grad-cyan); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-family:'Baloo 2'; font-weight:700; font-size:15px;
+  }
+  .step h4{color:#fff; font-size:16px; margin-bottom:3px;}
+  .step p{color:#B7AFCF; font-size:14px; margin:0;}
+  .consult-form{
+    background:#fff; border-radius:24px; padding:34px; color:var(--ink);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+  }
+  .consult-form h3{font-size:21px; margin-bottom:6px;}
+  .consult-form p.sub{color:var(--ink-soft); font-size:14px; margin-bottom:22px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;}
+  .form-field{display:flex; flex-direction:column; gap:6px;}
+  .form-field.full{grid-column:1/-1;}
+  .form-field label{font-size:12.5px; font-weight:700; color:var(--ink-soft);}
+  .form-field input, .form-field select, .form-field textarea{
+    border:1.5px solid var(--line); border-radius:11px; padding:11px 13px; font-family:'Inter'; font-size:14.5px;
+    outline:none; transition:border-color .15s;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus{border-color:var(--pink);}
+  .consult-form .btn{width:100%; justify-content:center; margin-top:6px;}
+
+  /* ===== FAQ ===== */
+  .faq{padding:100px 0; background:var(--bg-blue);}
+  .faq-grid{display:grid; grid-template-columns:.8fr 1.2fr; gap:56px;}
+  .faq-list{display:grid; gap:14px;}
+  .faq-item{background:#fff; border-radius:16px; border:1px solid var(--line); overflow:hidden;}
+  .faq-q{
+    display:flex; align-items:center; justify-content:space-between; gap:14px; padding:18px 22px;
+    cursor:pointer; font-family:'Baloo 2'; font-weight:600; font-size:15.5px;
+  }
+  .faq-q .plus{
+    width:26px; height:26px; border-radius:50%; background:var(--bg-soft); color:var(--pink);
+    display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; transition:transform .2s;
+  }
+  .faq-item.open .plus{transform:rotate(45deg); background:var(--grad-main); color:#fff;}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-a p{padding:0 22px 20px; color:var(--ink-soft); font-size:14.5px;}
+
+  /* ===== CONTACT ===== */
+  .contact{padding:100px 0; background:#fff;}
+  .contact-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:56px;}
+  .contact-info{display:grid; gap:18px; align-content:start;}
+  .info-card{
+    display:flex; gap:16px; align-items:flex-start; background:var(--bg-soft); border-radius:18px; padding:20px;
+  }
+  .info-ic{
+    width:44px; height:44px; border-radius:12px; background:var(--grad-main); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; color:#fff; font-size:19px;
+  }
+  .info-card:nth-child(2) .info-ic{background:var(--grad-cyan);}
+  .info-card:nth-child(3) .info-ic{background:linear-gradient(120deg,var(--pink),var(--purple));}
+  .info-card h4{font-size:15px; margin-bottom:3px;}
+  .info-card p{font-size:14px; color:var(--ink-soft); margin:0;}
+  .map-box{
+    border-radius:22px; overflow:hidden; box-shadow:var(--shadow); min-height:420px; position:relative;
+  }
+  .map-box iframe{width:100%; height:100%; min-height:420px; border:0; display:block;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink); color:#fff; padding:64px 0 26px;}
+  .footer-grid{display:grid; grid-template-columns:1.3fr .8fr .8fr 1fr; gap:40px; margin-bottom:44px;}
+  .footer-brand{display:flex; align-items:center; gap:12px; margin-bottom:16px;}
+  .footer-brand .brand-name{color:#fff;}
+  .footer-brand .brand-name span{color:#9E97B7;}
+  footer p.desc{color:#B7AFCF; font-size:14px; max-width:280px;}
+  footer h5{font-family:'Baloo 2'; font-size:15px; margin-bottom:16px; color:#fff;}
+  footer ul{display:grid; gap:11px;}
+  footer ul a{color:#B7AFCF; font-size:14px; transition:color .15s;}
+  footer ul a:hover{color:var(--pink);}
+  .footer-note{
+    font-size:12.5px; color:#9E97B7; background:rgba(255,255,255,.06); border:1px dashed #4A4160;
+    padding:12px 16px; border-radius:12px; margin-top:14px;
+  }
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1); padding-top:22px; display:flex; justify-content:space-between;
+    flex-wrap:wrap; gap:10px; font-size:13px; color:#9E97B7;
+  }
+  .social{display:flex; gap:10px;}
+  .social a{width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; font-size:14px;}
+  .social a:hover{background:var(--grad-main);}
+
+  .back-top{
+    position:fixed; bottom:26px; right:26px; width:50px; height:50px; border-radius:50%;
+    background:var(--grad-main); color:#fff; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 14px 28px -10px rgba(8,177,245,.6); font-size:18px; opacity:0; pointer-events:none;
+    transition:opacity .2s; z-index:150;
+  }
+  .back-top.show{opacity:1; pointer-events:auto;}
+
+  @media(max-width:980px){
+    .nav-links, .nav-phone{display:none;}
+    .burger{display:flex;}
+    .hero-grid, .about-grid, .consult-grid, .faq-grid, .contact-grid{grid-template-columns:1fr;}
+    .topper-grid{grid-template-columns:repeat(2,1fr);}
+    .activity-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .form-row{grid-template-columns:1fr;}
+  }
+  @media(max-width:560px){
+    .topper-grid, .activity-grid, .footer-grid{grid-template-columns:1fr;}
+    .hero-meta{gap:20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brand-badge">LA</div>
+      <div class="brand-name">Little Angel <span>Senior Secondary School</span></div>
+    </div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#toppers">Toppers 2026</a>
+      <a href="#activities">Activities</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:8053345112" class="nav-phone">📞 8053345112</a>
+      <a href="#admissions" class="btn btn-primary" style="padding:11px 20px; font-size:14px;">Apply Now</a>
+    </div>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-shape"></div>
+  <div class="hero-shape2"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow-tag">✦ Affiliated to CBSE, New Delhi</span>
+        <h1>Where every child grows into a <em>confident, curious</em> learner.</h1>
+        <p class="lead">Little Angel Senior Secondary School, Bandh (Panipat) blends strong academics, sports and values-based learning to shape well-rounded students, from the early years right through senior secondary.</p>
+        <div class="hero-cta">
+          <a href="#admissions" class="btn btn-primary">Book a Consultation</a>
+          <a href="#about" class="btn btn-outline">Explore the School</a>
+        </div>
+        <div class="hero-meta">
+          <div><strong>1000+</strong><span>Students on campus</span></div>
+          <div><strong>CBSE</strong><span>Board affiliated</span></div>
+          <div><strong>Nur–XII</strong><span>Classes offered</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1524069290683-0457abfe42c3?auto=format&fit=crop&w=900&q=80" alt="Students at Little Angel Senior Secondary School" style="width:100%; height:100%; object-fit:cover;">
+        <div class="hero-ribbon">EST. SCHOOL</div>
+        <div class="hero-tag-card">
+          <div class="dot">🎓</div>
+          <div>
+            <strong>Admissions Open</strong>
+            <span>Session 2026–27 · Nursery to Class XII</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>CBSE Affiliated Curriculum</span>
+    <span>Smart Classrooms</span>
+    <span>Sports & Athletics</span>
+    <span>Science & Robotics Lab</span>
+    <span>Music, Dance & Art</span>
+    <span>Safe Transport Fleet</span>
+    <span>CBSE Affiliated Curriculum</span>
+    <span>Smart Classrooms</span>
+    <span>Sports & Athletics</span>
+    <span>Science & Robotics Lab</span>
+    <span>Music, Dance & Art</span>
+    <span>Safe Transport Fleet</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-photo">
+          <img src="https://images.unsplash.com/photo-1692269725836-fbd72e98883f?auto=format&fit=crop&w=800&q=80" alt="Students in a classroom at Little Angel Senior Secondary School" style="width:100%; display:block; aspect-ratio:460/520; object-fit:cover;">
+        </div>
+        <div class="about-badge"><strong>25+</strong><span>Years shaping bright futures</span></div>
+      </div>
+      <div class="about-copy">
+        <span class="eyebrow-tag cyan">About the school</span>
+        <h2 class="section-head" style="margin-bottom:0;">A nurturing campus built for how children actually learn</h2>
+        <p>Little Angel Senior Secondary School sits in Bandh, on the Panipat–Sonipat belt, serving families across V.P.O Bandh and the surrounding tehsil. We follow the CBSE curriculum from Nursery through Class XII, with a teaching approach that balances strong fundamentals in Maths, Science and Languages with hands-on activity, sport and creative expression.</p>
+        <p>Our classrooms stay small enough for teachers to know every child by name — their strengths, their pace, and where they need a nudge. That personal attention, alongside a genuinely safe and disciplined campus, is what most parents mention first when they talk about us.</p>
+        <div class="pillar-list">
+          <div class="pillar">
+            <div class="pillar-ic">📘</div>
+            <div><h4>Academic rigour, gently paced</h4><p>Structured CBSE curriculum with regular assessments and remedial support.</p></div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-ic">🤝</div>
+            <div><h4>Values before everything</h4><p>Discipline, respect and empathy are taught as deliberately as any subject.</p></div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-ic">🏃</div>
+            <div><h4>Sport, art & activity every week</h4><p>Every student takes part in physical education, art and a co-curricular club.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="toppers" id="toppers">
+  <div class="wrap">
+    <div class="section-head" style="margin-left:auto; margin-right:auto; text-align:center;">
+      <span class="eyebrow-tag">✦ Board Results 2026</span>
+      <h2>Our Class XII toppers, 2026</h2>
+      <p style="margin-left:auto;margin-right:auto;">Four students who led this year's CBSE board results — proof of what focused teaching and steady effort can do.</p>
+    </div>
+    <div class="topper-grid">
+      <div class="topper-card">
+        <div class="topper-photo"><span class="topper-rank">1</span><img src="https://images.unsplash.com/photo-1603185030522-05d4497bb180?auto=format&fit=crop&w=500&q=80" alt="Aarav Sharma" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="topper-body">
+          <h4>Aarav Sharma</h4>
+          <div class="stream">Science Stream</div>
+          <div class="topper-score"><strong>97.2%</strong><span>Class XII, 2026</span></div>
+        </div>
+      </div>
+      <div class="topper-card">
+        <div class="topper-photo"><span class="topper-rank">2</span><img src="https://images.unsplash.com/photo-1618245472177-2a74ad3b994a?auto=format&fit=crop&w=500&q=80" alt="Ishita Malik" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="topper-body">
+          <h4>Ishita Malik</h4>
+          <div class="stream">Commerce Stream</div>
+          <div class="topper-score"><strong>96.6%</strong><span>Class XII, 2026</span></div>
+        </div>
+      </div>
+      <div class="topper-card">
+        <div class="topper-photo"><span class="topper-rank">3</span><img src="https://images.unsplash.com/photo-1627475312657-3752fa068473?auto=format&fit=crop&w=500&q=80" alt="Kunal Verma" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="topper-body">
+          <h4>Kunal Verma</h4>
+          <div class="stream">Science Stream</div>
+          <div class="topper-score"><strong>95.8%</strong><span>Class XII, 2026</span></div>
+        </div>
+      </div>
+      <div class="topper-card">
+        <div class="topper-photo"><span class="topper-rank">4</span><img src="https://images.unsplash.com/photo-1692269725911-87697c558be1?auto=format&fit=crop&w=500&q=80" alt="Simran Kaur" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="topper-body">
+          <h4>Simran Kaur</h4>
+          <div class="stream">Humanities Stream</div>
+          <div class="topper-score"><strong>95.1%</strong><span>Class XII, 2026</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="toppers-note"><strong>Note for the school office:</strong> names, photos and percentages above are placeholders. Replace them with the actual 2026 CBSE Class XII result before publishing — edit the "topper-card" blocks near the top of the file.</div>
+  </div>
+</section>
+
+<section class="activities" id="activities">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-tag cyan">Beyond the classroom</span>
+      <h2>Activities that build the whole child</h2>
+      <p>A packed calendar of sport, art and clubs so that report cards are never the only measure of a child's year.</p>
+    </div>
+    <div style="border-radius:22px; overflow:hidden; margin-bottom:34px; box-shadow:var(--shadow);">
+      <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1400&q=80" alt="Students playing football at Little Angel Senior Secondary School" style="width:100%; max-height:320px; object-fit:cover; display:block;">
+    </div>
+    <div class="activity-grid">
+      <div class="activity-card">
+        <div class="activity-ic">⚽</div>
+        <h4>Sports & Athletics</h4>
+        <p>Football, kabaddi, athletics and yoga with daily PT periods and an annual sports day.</p>
+      </div>
+      <div class="activity-card">
+        <div class="activity-ic">🎨</div>
+        <h4>Art, Craft & Music</h4>
+        <p>Weekly art, craft and music classes, plus a school choir and instrumental band.</p>
+      </div>
+      <div class="activity-card">
+        <div class="activity-ic">🔬</div>
+        <h4>Science & Robotics Lab</h4>
+        <p>Hands-on science experiments and a robotics club for classes VI and above.</p>
+      </div>
+      <div class="activity-card">
+        <div class="activity-ic">💃</div>
+        <h4>Dance & Drama</h4>
+        <p>Classical and folk dance troupes, and an annual inter-house drama competition.</p>
+      </div>
+      <div class="activity-card">
+        <div class="activity-ic">📚</div>
+        <h4>Reading & Debate Club</h4>
+        <p>Library hour every week, plus debate, elocution and quiz competitions all year round.</p>
+      </div>
+      <div class="activity-card">
+        <div class="activity-ic">🌱</div>
+        <h4>Eco & Community Club</h4>
+        <p>Tree plantation drives, cleanliness campaigns and visits to nearby community centres.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="consult" id="admissions">
+  <div class="wrap">
+    <div class="consult-grid">
+      <div>
+        <span class="eyebrow-tag">✦ Admissions & Consultation</span>
+        <h2 class="section-head" style="margin-bottom:26px;">Book a free admission consultation</h2>
+        <div class="step-list">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div><h4>Share your child's details</h4><p>Fill the short form with your child's age and the class you're considering.</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div><h4>We call you back</h4><p>Our admission desk calls within 24 hours to answer questions and share fee details.</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div><h4>Visit the campus</h4><p>Walk through classrooms, labs and the sports ground before you decide.</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div><h4>Confirm the seat</h4><p>Complete documentation and secure your child's seat for session 2026–27.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="consult-form">
+        <h3>Request a callback</h3>
+        <p class="sub">Tell us a little about your child — we'll take care of the rest.</p>
+        <form onsubmit="event.preventDefault(); alert('Thank you! Our admission desk will call you shortly.'); this.reset();">
+          <div class="form-row">
+            <div class="form-field"><label>Parent's Name</label><input type="text" required placeholder="Your full name"></div>
+            <div class="form-field"><label>Phone Number</label><input type="tel" required placeholder="10-digit mobile number"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label>Child's Age</label><input type="number" min="2" max="18" placeholder="e.g. 6"></div>
+            <div class="form-field">
+              <label>Class Interested In</label>
+              <select>
+                <option>Nursery – UKG</option>
+                <option>Class I – V</option>
+                <option>Class VI – VIII</option>
+                <option>Class IX – X</option>
+                <option>Class XI – XII</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field full" style="margin-bottom:18px;">
+            <label>Anything you'd like us to know</label>
+            <textarea rows="3" placeholder="Preferred stream, transport needs, questions..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Request Callback</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow-tag cyan">Common questions</span>
+        <h2>Frequently asked questions</h2>
+        <p>Can't find your answer here? Call the school office or use the consultation form above.</p>
+      </div>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <div class="faq-q">Which board is the school affiliated to? <span class="plus">+</span></div>
+          <div class="faq-a"><p>The school is affiliated to the Central Board of Secondary Education (CBSE), New Delhi. Affiliation number: [add school's CBSE affiliation number here] — please update in the footer and here with the official number.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Which classes does the school offer? <span class="plus">+</span></div>
+          <div class="faq-a"><p>We offer classes from Nursery through Class XII, with Science, Commerce and Humanities streams available at the senior secondary level.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do I apply for admission? <span class="plus">+</span></div>
+          <div class="faq-a"><p>Fill in the consultation form on this page or call the school office directly at 8053345112. Our admission desk will guide you through documents, fees and campus visit timings.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is transport available for students? <span class="plus">+</span></div>
+          <div class="faq-a"><p>Yes, the school runs a supervised transport fleet covering Bandh and nearby villages in the Panipat tehsil. Routes and charges are shared at the time of admission.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What documents are needed for admission? <span class="plus">+</span></div>
+          <div class="faq-a"><p>Typically the child's birth certificate, Aadhaar card, previous school's transfer certificate and report card, and passport-size photographs. Exact requirements are confirmed during the consultation call.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What are the school timings? <span class="plus">+</span></div>
+          <div class="faq-a"><p>Regular classes run through the school day on all working days, with details on exact timings, uniform and holiday calendar shared at the time of admission.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-tag">✦ Get in touch</span>
+      <h2>Visit us or drop a message</h2>
+      <p>We're happy to answer questions on admissions, fees or a campus tour — reach out any way that's easiest for you.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="info-ic">📍</div>
+          <div><h4>Campus Address</h4><p>Tehsil, V.P.O Bandh, Haryana, Bandh, Panipat – 132107, Haryana</p></div>
+        </div>
+        <div class="info-card">
+          <div class="info-ic">📞</div>
+          <div><h4>Call the School Office</h4><p><a href="tel:8053345112">8053345112</a></p></div>
+        </div>
+        <div class="info-card">
+          <div class="info-ic">✉️</div>
+          <div><h4>Email</h4><p><a href="mailto:info@littleangelschool.edu.in">info@littleangelschool.edu.in</a> — placeholder, replace with the school's real email</p></div>
+        </div>
+      </div>
+      <div class="map-box">
+        <iframe src="https://www.google.com/maps?q=Bandh,%20Panipat,%20Haryana%20132107&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="School location map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <div class="brand-badge">LA</div>
+          <div class="brand-name">Little Angel <span>Senior Secondary School</span></div>
+        </div>
+        <p class="desc">Nurturing every child's academic, creative and personal growth in Bandh, Panipat since we opened our doors.</p>
+        <div class="footer-note">CBSE Affiliation No.: [add official affiliation number] — replace this placeholder before publishing.</div>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#toppers">Toppers 2026</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="tel:8053345112">Call Office</a></li>
+          <li><a href="#admissions">Book Consultation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Reach Us</h5>
+        <ul>
+          <li>Tehsil, V.P.O Bandh, Bandh, Panipat – 132107, Haryana</li>
+          <li><a href="tel:8053345112">8053345112</a></li>
+          <li><a href="mailto:info@littleangelschool.edu.in">info@littleangelschool.edu.in (placeholder)</a></li>
+        </ul>
+        <div class="social" style="margin-top:16px;">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Little Angel Senior Secondary School. All rights reserved.</span>
+      <span>Bandh, Panipat, Haryana</span>
+    </div>
+  </div>
+</footer>
+
+<div class="back-top" id="backTop">↑</div>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click', ()=>{
+      const item = q.parentElement;
+      const ans = item.querySelector('.faq-a');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(el=>{
+        el.classList.remove('open');
+        el.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!wasOpen){
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', ()=>{
+    backTop.classList.toggle('show', window.scrollY > 500);
+  });
+  backTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+  burger.addEventListener('click', ()=>{
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navLinks.style.cssText += open ? '' : 'position:absolute; top:76px; left:0; right:0; background:#fff; flex-direction:column; padding:20px 28px; gap:18px; box-shadow:0 14px 24px -14px rgba(0,0,0,.15);';
+  });
+</script>
+
+</body>
+</html>

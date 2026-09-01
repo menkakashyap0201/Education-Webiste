@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sadanand Bal Vidya Mandir Sr. Sec. School — Panipat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0E7A63;
+    --teal-dark:#0B5F4E;
+    --teal-darker:#0A4F41;
+    --gold:#F5A623;
+    --gold-dark:#DB8F14;
+    --ink:#1A1D1B;
+    --gray:#6B7280;
+    --gray-light:#9AA0A6;
+    --bg:#FAFAF7;
+    --line:#ECEBE5;
+    --shadow: 0 30px 60px -25px rgba(14,122,99,.25);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Poppins', sans-serif; color:var(--ink); background:var(--bg); line-height:1.6;}
+  h1,h2,h3,h4{font-weight:700; line-height:1.18;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  section{position:relative;}
+  .btn{
+    display:inline-flex; align-items:center; gap:9px; font-weight:600; font-size:15px;
+    padding:14px 26px; border-radius:12px; border:none; cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--teal); color:#fff; box-shadow:0 14px 26px -12px rgba(14,122,99,.55);}
+  .btn-primary:hover{background:var(--teal-dark);}
+  .btn-text{color:var(--teal); font-weight:600; display:inline-flex; align-items:center; gap:8px;}
+  .btn-text .play{
+    width:34px; height:34px; border-radius:50%; border:1.5px solid var(--teal);
+    display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;
+  }
+  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:13px; color:var(--teal); background:#E9F5F1; padding:6px 14px; border-radius:999px;}
+  .section-head{max-width:600px; margin:0 auto 46px; text-align:center;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(28px,3.6vw,38px);}
+  .section-head p{color:var(--gray); font-size:16px; margin-top:12px;}
+
+  /* ===== TOP UTILITY BAR ===== */
+  .topbar{padding:30px 0 0;}
+  .topbar-inner{display:flex; justify-content:space-between; align-items:flex-start; max-width:1180px; margin:0 auto; padding:0 24px;}
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-mark{width:30px; height:30px; border-radius:8px; background:var(--gold); display:flex; align-items:center; justify-content:center; font-size:15px;}
+  .brand-title{font-weight:700; font-size:20px;}
+  .brand-title .c1{color:var(--teal);}
+  .brand-title .c2{color:var(--gold);}
+  .topbar-sub{font-size:12.5px; color:var(--gray-light); margin-top:4px; margin-left:40px;}
+  .topbar-badges{display:flex; gap:10px;}
+  .badge-pill{
+    display:flex; align-items:center; gap:7px; background:#fff; border:1px solid var(--line);
+    padding:8px 14px; border-radius:999px; font-size:12.5px; font-weight:600; color:var(--gray);
+    box-shadow:0 6px 14px -8px rgba(0,0,0,.08);
+  }
+
+  /* ===== HERO CARD ===== */
+  .hero-outer{padding:26px 0 90px; position:relative; overflow:hidden;}
+  .dot-grid{
+    position:absolute; top:130px; left:14px; width:70px; height:70px; z-index:0;
+    background-image:radial-gradient(var(--gold) 1.6px, transparent 1.6px);
+    background-size:12px 12px; opacity:.55;
+  }
+  .blob{
+    position:absolute; bottom:-140px; right:-120px; width:520px; height:420px; z-index:0;
+    background:radial-gradient(circle, rgba(14,122,99,.14), transparent 70%);
+  }
+  .hero-card{
+    position:relative; z-index:1; background:#fff; border-radius:28px; box-shadow:var(--shadow);
+    padding:34px 40px 0; overflow:hidden;
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding-bottom:34px;}
+  .nav-links{display:flex; align-items:center; gap:34px;}
+  .nav-links a{font-size:14.5px; font-weight:500; color:var(--gray); transition:color .15s;}
+  .nav-links a.active, .nav-links a:hover{color:var(--ink);}
+  .nav-cta{display:flex; align-items:center; gap:22px;}
+  .nav-cta .signin{font-size:14.5px; font-weight:600; color:var(--gray);}
+  .nav-cta .btn{padding:11px 22px; font-size:14px;}
+  .burger{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none;}
+  .burger span{width:22px; height:3px; background:var(--ink); border-radius:2px;}
+
+  .hero-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; padding-bottom:52px;}
+  .hero-copy h1{font-size:clamp(32px,4.2vw,46px); letter-spacing:-.01em;}
+  .hero-copy h1 .accent{color:var(--teal);}
+  .hero-copy p.lead{color:var(--gray); font-size:15.5px; max-width:400px; margin:18px 0 28px;}
+  .hero-actions{display:flex; align-items:center; gap:26px;}
+
+  .hero-visual{position:relative;}
+  .hero-shape{
+    position:absolute; top:14px; left:26px; right:-14px; bottom:-14px;
+    background:var(--teal); border-radius:26px; z-index:0;
+  }
+  .hero-photo{position:relative; z-index:1; border-radius:22px; overflow:hidden; aspect-ratio:1/0.82;}
+  .hero-photo img{width:100%; height:100%; object-fit:cover;}
+  .stat-card{
+    position:absolute; z-index:2; background:#fff; border-radius:14px; padding:12px 16px;
+    box-shadow:0 16px 30px -14px rgba(0,0,0,.18); display:flex; align-items:center; gap:11px;
+  }
+  .stat-card .ic{width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;}
+  .stat-top{top:-18px; left:-22px;}
+  .stat-top .ic{background:#FDECC8; color:var(--gold-dark);}
+  .stat-top strong{display:block; font-size:15px; font-weight:700;}
+  .stat-top span{font-size:11px; color:var(--gray);}
+  .stat-mid{bottom:70px; right:-26px;}
+  .stat-mid .ic{background:#E4F2EE; color:var(--teal);}
+  .stat-mid strong{display:block; font-size:14.5px; font-weight:700; color:var(--teal);}
+  .stat-mid span{font-size:10.5px; color:var(--gray);}
+  .stat-bottom{bottom:-18px; left:34px;}
+  .stat-bottom .ic{background:#E4F2EE; color:var(--teal);}
+  .stat-bottom strong{display:block; font-size:14.5px; font-weight:700; color:var(--teal);}
+  .stat-bottom span{font-size:10.5px; color:var(--gray);}
+
+  .programs-bar{
+    background:var(--teal-darker); border-radius:20px; padding:34px 40px;
+    display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:20px; align-items:center;
+    position:relative; z-index:1; margin-bottom:-1px;
+  }
+  .programs-bar .scroll-tab{
+    position:absolute; left:-30px; top:50%; transform:translateY(-50%) rotate(-90deg);
+    font-size:11px; color:var(--gray-light); letter-spacing:.08em; display:flex; align-items:center; gap:6px;
+  }
+  .programs-lead h3{color:#fff; font-size:19px; margin-bottom:8px;}
+  .programs-lead p{color:#B9CFC8; font-size:13.5px; max-width:220px;}
+  .program-item{color:#fff;}
+  .program-item .pic{width:38px; height:38px; margin-bottom:12px;}
+  .program-item h4{font-size:14.5px; margin-bottom:4px;}
+  .program-item a{font-size:12px; color:var(--gold); font-weight:600;}
+
+  /* ===== ABOUT ===== */
+  .about{padding:110px 0 100px;}
+  .about-grid{display:grid; grid-template-columns:.95fr 1.05fr; gap:60px; align-items:center;}
+  .about-visual{position:relative;}
+  .about-shape{position:absolute; top:16px; left:-16px; right:16px; bottom:-16px; background:var(--gold); border-radius:22px; opacity:.18;}
+  .about-photo{position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow);}
+  .about-photo img{width:100%; aspect-ratio:1/1.05; object-fit:cover;}
+  .about-badge{
+    position:absolute; bottom:-24px; right:-24px; background:#fff; border-radius:16px; padding:18px 20px;
+    box-shadow:0 18px 32px -14px rgba(0,0,0,.2); text-align:center; width:130px;
+  }
+  .about-badge strong{display:block; font-size:26px; color:var(--teal); font-weight:800;}
+  .about-badge span{font-size:11.5px; color:var(--gray); font-weight:500;}
+  .about-copy p{color:var(--gray); font-size:15.5px; margin:16px 0;}
+  .stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:30px;}
+  .stat-box{background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px 18px;}
+  .stat-box strong{display:block; font-size:24px; color:var(--teal); font-weight:800;}
+  .stat-box span{font-size:12.5px; color:var(--gray); font-weight:500;}
+
+  /* ===== TOPPERS ===== */
+  .toppers{padding:100px 0; background:#F4F8F6;}
+  .topper-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .topper-card{background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 16px 32px -22px rgba(0,0,0,.2); transition:transform .2s;}
+  .topper-card:hover{transform:translateY(-6px);}
+  .topper-photo{position:relative; aspect-ratio:1/1;}
+  .topper-photo img{width:100%; height:100%; object-fit:cover;}
+  .topper-rank{
+    position:absolute; top:12px; left:12px; background:var(--gold); color:#fff; font-weight:700; font-size:13px;
+    width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  }
+  .topper-body{padding:18px 18px 20px;}
+  .topper-body h4{font-size:16.5px; margin-bottom:2px;}
+  .topper-body .stream{font-size:12.5px; color:var(--gray); font-weight:500; margin-bottom:10px;}
+  .topper-score{display:flex; align-items:baseline; gap:6px;}
+  .topper-score strong{font-size:25px; font-weight:800; color:var(--teal);}
+  .topper-score span{font-size:12px; color:var(--gray);}
+  .toppers-note{
+    margin-top:26px; font-size:13.5px; color:var(--gray); background:#fff; border:1px dashed #D8C79A;
+    padding:14px 18px; border-radius:14px;
+  }
+  .toppers-note strong{color:var(--gold-dark);}
+
+  /* ===== ACTIVITIES ===== */
+  .activities{padding:100px 0;}
+  .activity-photo-strip{border-radius:22px; overflow:hidden; margin-bottom:36px; box-shadow:var(--shadow);}
+  .activity-photo-strip img{width:100%; max-height:320px; object-fit:cover;}
+  .activity-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .activity-card{border-radius:18px; padding:28px 24px; background:#fff; border:1px solid var(--line); transition:transform .2s, box-shadow .2s;}
+  .activity-card:hover{transform:translateY(-5px); box-shadow:0 20px 34px -22px rgba(0,0,0,.18);}
+  .activity-ic{width:48px; height:48px; border-radius:12px; background:#E4F2EE; color:var(--teal); display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:16px;}
+  .activity-card:nth-child(3n) .activity-ic{background:#FDECC8; color:var(--gold-dark);}
+  .activity-card h4{font-size:17px; margin-bottom:8px;}
+  .activity-card p{font-size:14px; color:var(--gray);}
+
+  /* ===== ADMISSIONS ===== */
+  .admissions{padding:100px 0; background:var(--teal-darker); color:#fff; position:relative; overflow:hidden;}
+  .admissions::before{content:""; position:absolute; top:-160px; right:-140px; width:420px; height:420px; background:var(--gold); opacity:.12; border-radius:50%; filter:blur(20px);}
+  .admissions-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; position:relative; z-index:1;}
+  .admissions h2{color:#fff; font-size:clamp(26px,3.4vw,34px); margin-bottom:16px;}
+  .admissions .eyebrow{background:rgba(255,255,255,.12); color:var(--gold);}
+  .admissions p.lead{color:#BFD9D1; font-size:15.5px; margin-bottom:28px; max-width:420px;}
+  .step-list{display:grid; gap:20px;}
+  .step{display:flex; gap:16px; align-items:flex-start;}
+  .step-num{width:34px; height:34px; border-radius:50%; background:var(--gold); color:#fff; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px;}
+  .step h4{color:#fff; font-size:15.5px; margin-bottom:3px;}
+  .step p{color:#9FC0B7; font-size:13.5px; margin:0;}
+  .admit-form{background:#fff; border-radius:22px; padding:32px; color:var(--ink); box-shadow:0 30px 60px -20px rgba(0,0,0,.4);}
+  .admit-form h3{font-size:20px; margin-bottom:6px;}
+  .admit-form p.sub{color:var(--gray); font-size:13.5px; margin-bottom:22px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;}
+  .form-field{display:flex; flex-direction:column; gap:6px;}
+  .form-field.full{grid-column:1/-1;}
+  .form-field label{font-size:12px; font-weight:600; color:var(--gray);}
+  .form-field input, .form-field select, .form-field textarea{
+    border:1.5px solid var(--line); border-radius:10px; padding:11px 13px; font-family:'Poppins'; font-size:14px; outline:none;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus{border-color:var(--teal);}
+  .admit-form .btn{width:100%; justify-content:center; margin-top:6px;}
+
+  /* ===== FAQ ===== */
+  .faq{padding:100px 0; background:#F4F8F6;}
+  .faq-grid{display:grid; grid-template-columns:.8fr 1.2fr; gap:56px;}
+  .faq-head{text-align:left;}
+  .faq-list{display:grid; gap:14px;}
+  .faq-item{background:#fff; border-radius:14px; border:1px solid var(--line); overflow:hidden;}
+  .faq-q{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:18px 22px; cursor:pointer; font-weight:600; font-size:15px;}
+  .faq-q .plus{width:26px; height:26px; border-radius:50%; background:#E4F2EE; color:var(--teal); display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0; transition:transform .2s;}
+  .faq-item.open .plus{transform:rotate(45deg); background:var(--teal); color:#fff;}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-a p{padding:0 22px 20px; color:var(--gray); font-size:14px;}
+
+  /* ===== CONTACT ===== */
+  .contact{padding:100px 0;}
+  .contact-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:56px;}
+  .contact-info{display:grid; gap:16px; align-content:start;}
+  .info-card{display:flex; gap:14px; align-items:flex-start; background:#F4F8F6; border-radius:16px; padding:18px;}
+  .info-ic{width:42px; height:42px; border-radius:11px; background:var(--teal); color:#fff; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:18px;}
+  .info-card:nth-child(3) .info-ic{background:var(--gold);}
+  .info-card h4{font-size:14.5px; margin-bottom:3px;}
+  .info-card p{font-size:13.5px; color:var(--gray); margin:0;}
+  .map-box{border-radius:20px; overflow:hidden; box-shadow:var(--shadow); min-height:420px;}
+  .map-box iframe{width:100%; height:100%; min-height:420px; border:0; display:block;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--teal-darker); color:#fff; padding:60px 0 26px;}
+  .footer-grid{display:grid; grid-template-columns:1.3fr .8fr .8fr 1fr; gap:40px; margin-bottom:40px;}
+  .footer-brand{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+  .footer-brand .brand-title{color:#fff;}
+  .footer-brand .brand-title .c1{color:#fff;} .footer-brand .brand-title .c2{color:var(--gold);}
+  footer p.desc{color:#9FC0B7; font-size:13.5px; max-width:280px;}
+  footer h5{font-size:14.5px; margin-bottom:16px; color:#fff;}
+  footer ul{display:grid; gap:10px;}
+  footer ul a{color:#9FC0B7; font-size:13.5px;}
+  footer ul a:hover{color:var(--gold);}
+  .footer-note{font-size:12px; color:#9FC0B7; background:rgba(255,255,255,.07); border:1px dashed rgba(255,255,255,.25); padding:12px 15px; border-radius:12px; margin-top:14px;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.14); padding-top:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12.5px; color:#9FC0B7;}
+
+  .back-top{position:fixed; bottom:26px; right:26px; width:48px; height:48px; border-radius:50%; background:var(--teal); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 14px 26px -10px rgba(14,122,99,.6); font-size:17px; opacity:0; pointer-events:none; transition:opacity .2s; z-index:150;}
+  .back-top.show{opacity:1; pointer-events:auto;}
+
+  @media(max-width:980px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .hero-grid, .about-grid, .admissions-grid, .faq-grid, .contact-grid{grid-template-columns:1fr;}
+    .programs-bar{grid-template-columns:1fr 1fr; row-gap:26px;}
+    .topper-grid{grid-template-columns:repeat(2,1fr);}
+    .activity-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .topbar-badges{display:none;}
+    .form-row{grid-template-columns:1fr;}
+  }
+  @media(max-width:560px){
+    .topper-grid, .activity-grid, .footer-grid, .stat-row, .programs-bar{grid-template-columns:1fr;}
+    .hero-card{padding:26px 20px 0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div>
+      <div class="brand">
+        <div class="brand-mark">🎓</div>
+        <div class="brand-title"><span class="c1">Sadanand</span> <span class="c2">BVM</span></div>
+      </div>
+      <div class="topbar-sub">Sr. Sec. School — Krishanpura, Panipat</div>
+    </div>
+    <div class="topbar-badges">
+      <div class="badge-pill">📘 CBSE Affiliated</div>
+      <div class="badge-pill">📍 Panipat, Haryana</div>
+      <div class="badge-pill">📞 98963 56221</div>
+    </div>
+  </div>
+</div>
+
+<div class="hero-outer">
+  <div class="dot-grid"></div>
+  <div class="blob"></div>
+  <div class="wrap">
+    <div class="hero-card">
+      <div class="nav">
+        <div class="brand">
+          <div class="brand-mark">🎓</div>
+          <div class="brand-title"><span class="c1">Sadanand</span> <span class="c2">BVM</span></div>
+        </div>
+        <nav class="nav-links">
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#programs">Programs</a>
+          <a href="#toppers">Toppers</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-cta">
+          <a href="tel:9896356221" class="signin">Sign In</a>
+          <a href="#admissions" class="btn btn-primary">Sign Up</a>
+        </div>
+        <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+
+      <div class="hero-grid" id="home">
+        <div class="hero-copy">
+          <h1>Learning <span class="accent">Beyond</span> Boundaries</h1>
+          <p class="lead">Sadanand Bal Vidya Mandir Sr. Sec. School nurtures every child with strong CBSE academics, discipline and care, right here in Krishanpura, Panipat.</p>
+          <div class="hero-actions">
+            <a href="#admissions" class="btn btn-primary">Get Started →</a>
+            <a href="#about" class="btn-text"><span class="play">▶</span> Watch Video</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-shape"></div>
+          <div class="hero-photo">
+            <img src="https://images.unsplash.com/photo-1709290749293-c6152a187b14?auto=format&fit=crop&w=800&q=80" alt="Students at Sadanand Bal Vidya Mandir">
+          </div>
+          <div class="stat-card stat-top">
+            <div class="ic">📗</div>
+            <div><strong>35+</strong><span>Years of legacy &amp; increasing</span></div>
+          </div>
+          <div class="stat-card stat-mid">
+            <div class="ic">👥</div>
+            <div><strong>1.2K+</strong><span>Total Active Students</span></div>
+          </div>
+          <div class="stat-card stat-bottom">
+            <div class="ic">🎓</div>
+            <div><strong>60+</strong><span>Teachers &amp; instructors</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="programs-bar" id="programs">
+        <div class="scroll-tab">↓ Scroll</div>
+        <div class="programs-lead">
+          <h3>Streams &amp; Programs</h3>
+          <p>CBSE curriculum from Nursery to Class XII with a stream for every ambition.</p>
+        </div>
+        <div class="program-item">
+          <div class="pic">🔬</div>
+          <h4>Science Stream</h4>
+          <a href="#about">Learn more ›</a>
+        </div>
+        <div class="program-item">
+          <div class="pic">📊</div>
+          <h4>Commerce Stream</h4>
+          <a href="#about">Learn more ›</a>
+        </div>
+        <div class="program-item">
+          <div class="pic">📚</div>
+          <h4>Humanities Stream</h4>
+          <a href="#about">Learn more ›</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-shape"></div>
+        <div class="about-photo">
+          <img src="https://images.unsplash.com/photo-1777289048389-4c763fd65864?auto=format&fit=crop&w=800&q=80" alt="Students at Sadanand Bal Vidya Mandir">
+        </div>
+        <div class="about-badge"><strong>CBSE</strong><span>Board affiliated school</span></div>
+      </div>
+      <div class="about-copy">
+        <span class="eyebrow">✦ About the school</span>
+        <h2 style="font-size:clamp(26px,3.4vw,34px); margin-top:16px;">A trusted neighbourhood school in the heart of Krishanpura</h2>
+        <p>Sadanand Bal Vidya Mandir Sr. Sec. School has been educating children of Panipat along Khanna Road in Krishanpura, giving families a school that's close to home and serious about learning. We teach the CBSE curriculum from Nursery through Class XII, with a strong focus on foundational Maths, Science and Languages.</p>
+        <p>Small class sizes and a disciplined, caring campus mean every student is known by name — not just a roll number. Alongside academics, we give equal weight to sport, art and the values that shape good citizens.</p>
+        <div class="stat-row">
+          <div class="stat-box"><strong>Nur–XII</strong><span>Classes offered</span></div>
+          <div class="stat-box"><strong>CBSE</strong><span>Curriculum followed</span></div>
+          <div class="stat-box"><strong>1.2K+</strong><span>Students on campus</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="toppers" id="toppers">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">✦ Board Results 2026</span>
+      <h2>Our Class XII toppers, 2026</h2>
+      <p>Four students who led this year's CBSE board results at Sadanand Bal Vidya Mandir.</p>
+    </div>
+    <div class="topper-grid">
+      <div class="topper-card">
+        <div class="topper-photo"><span class="topper-rank">1</span><img src="https://images.unsplash.com/photo-1623303366639-0e330d7c3d9f?auto=format&fit=crop&w=500&q=80" alt="Rohit Kumar"></div>
+        <div class="topper-body"><h4>Rohit Kumar</h4><div class="stream">Science Stream</div><div class="topper-score"><strong>96.8%</strong><span>Class XII, 2026</span></div></div>
+      </div>
+      <div class="topper-card">
+        <div class="topper-photo"><span class="topper-rank">2</span><img src="https://images.unsplash.com/photo-1572847748080-bac263fae977?auto=format&fit=crop&w=500&q=80" alt="Priya Sharma"></div>
+        <div class="topper-body"><h4>Priya Sharma</h4><div class="stream">Commerce Stream</div><div class="topper-score"><strong>96.1%</strong><span>Class XII, 2026</span></div></div>
+      </div>
+      <div class="topper-card">
+        <div class="topper-photo"><span class="topper-rank">3</span><img src="https://images.unsplash.com/flagged/photo-1574098335395-18cf525e45d6?auto=format&fit=crop&w=500&q=80" alt="Manish Kaushik"></div>
+        <div class="topper-body"><h4>Manish Kaushik</h4><div class="stream">Science Stream</div><div class="topper-score"><strong>95.4%</strong><span>Class XII, 2026</span></div></div>
+      </div>
+      <div class="topper-card">
+        <div class="topper-photo"><span class="topper-rank">4</span><img src="https://images.unsplash.com/photo-1765572144519-1dc1e6e07bc9?auto=format&fit=crop&w=500&q=80" alt="Kavita Rani"></div>
+        <div class="topper-body"><h4>Kavita Rani</h4><div class="stream">Humanities Stream</div><div class="topper-score"><strong>94.9%</strong><span>Class XII, 2026</span></div></div>
+      </div>
+    </div>
+    <div class="toppers-note"><strong>Note for the school office:</strong> names, photos and percentages above are placeholders — replace with the actual 2026 CBSE Class XII result before publishing (edit the "topper-card" blocks near the Toppers section).</div>
+  </div>
+</section>
+
+<section class="activities" id="activities">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">✦ Beyond the classroom</span>
+      <h2>Activities that build the whole child</h2>
+      <p>Sport, art and clubs so a report card is never the only measure of a child's year.</p>
+    </div>
+    <div class="activity-photo-strip">
+      <img src="https://images.unsplash.com/photo-1623863568368-69e4cbe6cc0b?auto=format&fit=crop&w=1400&q=80" alt="Students playing at Sadanand Bal Vidya Mandir">
+    </div>
+    <div class="activity-grid">
+      <div class="activity-card"><div class="activity-ic">⚽</div><h4>Sports &amp; Athletics</h4><p>Football, kabaddi, athletics and yoga with daily PT periods and an annual sports day.</p></div>
+      <div class="activity-card"><div class="activity-ic">🎨</div><h4>Art, Craft &amp; Music</h4><p>Weekly art, craft and music classes, plus a school choir and instrumental band.</p></div>
+      <div class="activity-card"><div class="activity-ic">🔬</div><h4>Science Lab</h4><p>Hands-on science experiments in a dedicated lab for classes VI and above.</p></div>
+      <div class="activity-card"><div class="activity-ic">💃</div><h4>Dance &amp; Drama</h4><p>Folk and classical dance troupes, plus an annual inter-house drama competition.</p></div>
+      <div class="activity-card"><div class="activity-ic">📚</div><h4>Reading &amp; Debate Club</h4><p>Library hour every week, plus debate, elocution and quiz competitions all year round.</p></div>
+      <div class="activity-card"><div class="activity-ic">🌱</div><h4>Eco Club</h4><p>Tree plantation drives and cleanliness campaigns around Krishanpura and Khanna Road.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="admissions" id="admissions">
+  <div class="wrap">
+    <div class="admissions-grid">
+      <div>
+        <span class="eyebrow">✦ Admissions &amp; Consultation</span>
+        <h2>Book a free admission consultation</h2>
+        <p class="lead">Tell us about your child and our admission desk will call you back within 24 hours.</p>
+        <div class="step-list">
+          <div class="step"><div class="step-num">1</div><div><h4>Share your child's details</h4><p>Fill the short form with your child's age and the class you're considering.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h4>We call you back</h4><p>Our admission desk calls within 24 hours with fee and seat details.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h4>Visit the campus</h4><p>Walk through classrooms and the school grounds before you decide.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div><h4>Confirm the seat</h4><p>Complete documentation and secure your child's seat for 2026–27.</p></div></div>
+        </div>
+      </div>
+      <div class="admit-form">
+        <h3>Request a callback</h3>
+        <p class="sub">Tell us a little about your child — we'll take care of the rest.</p>
+        <form onsubmit="event.preventDefault(); alert('Thank you! Our admission desk will call you shortly.'); this.reset();">
+          <div class="form-row">
+            <div class="form-field"><label>Parent's Name</label><input type="text" required placeholder="Your full name"></div>
+            <div class="form-field"><label>Phone Number</label><input type="tel" required placeholder="10-digit mobile number"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label>Child's Age</label><input type="number" min="2" max="18" placeholder="e.g. 6"></div>
+            <div class="form-field">
+              <label>Class Interested In</label>
+              <select>
+                <option>Nursery – UKG</option>
+                <option>Class I – V</option>
+                <option>Class VI – VIII</option>
+                <option>Class IX – X</option>
+                <option>Class XI – XII</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field full" style="margin-bottom:18px;">
+            <label>Anything you'd like us to know</label>
+            <textarea rows="3" placeholder="Preferred stream, transport needs, questions..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Request Callback</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="section-head faq-head">
+        <span class="eyebrow">✦ Common questions</span>
+        <h2>Frequently asked questions</h2>
+        <p>Can't find your answer here? Call the school office or use the consultation form above.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Which board is the school affiliated to? <span class="plus">+</span></div>
+          <div class="faq-a"><p>The school follows the CBSE curriculum. Affiliation number: [add school's official CBSE affiliation number here] — please update this before publishing.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Which classes does the school offer? <span class="plus">+</span></div>
+          <div class="faq-a"><p>We offer classes from Nursery through Class XII, with Science, Commerce and Humanities streams at the senior secondary level.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do I apply for admission? <span class="plus">+</span></div>
+          <div class="faq-a"><p>Fill in the consultation form on this page or call the school office directly at 98963 56221. Our admission desk will guide you through documents, fees and campus visit timings.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is transport available for students? <span class="plus">+</span></div>
+          <div class="faq-a"><p>Yes, the school runs a supervised transport service covering Krishanpura, Khanna Road and nearby areas of Panipat. Routes and charges are shared at the time of admission.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What documents are needed for admission? <span class="plus">+</span></div>
+          <div class="faq-a"><p>Typically the child's birth certificate, Aadhaar card, previous school's transfer certificate and report card, and passport-size photographs. Exact requirements are confirmed during the consultation call.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What are the school timings? <span class="plus">+</span></div>
+          <div class="faq-a"><p>Regular classes run through the school day on all working days, with exact timings, uniform details and the holiday calendar shared at the time of admission.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">✦ Get in touch</span>
+      <h2>Visit us or drop a message</h2>
+      <p>We're happy to answer questions on admissions, fees or a campus tour.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="info-ic">📍</div>
+          <div><h4>Campus Address</h4><p>Khanna Road, Krishanpura, Panipat, Haryana – 132103</p></div>
+        </div>
+        <div class="info-card">
+          <div class="info-ic">📞</div>
+          <div><h4>Call the School Office</h4><p><a href="tel:9896356221">98963 56221</a></p></div>
+        </div>
+        <div class="info-card">
+          <div class="info-ic">✉️</div>
+          <div><h4>Email</h4><p><a href="mailto:info@sadanandbvm.edu.in">info@sadanandbvm.edu.in</a> — placeholder, replace with the school's real email</p></div>
+        </div>
+      </div>
+      <div class="map-box">
+        <iframe src="https://www.google.com/maps?q=Krishanpura,%20Khanna%20Road,%20Panipat,%20Haryana%20132103&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="School location map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <div class="brand-mark">🎓</div>
+          <div class="brand-title"><span class="c1">Sadanand</span> <span class="c2">BVM</span></div>
+        </div>
+        <p class="desc">Educating the children of Krishanpura and Khanna Road, Panipat, with strong CBSE academics and a caring campus.</p>
+        <div class="footer-note">CBSE Affiliation No.: [add official affiliation number] — replace this placeholder before publishing.</div>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#toppers">Toppers 2026</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="tel:9896356221">Call Office</a></li>
+          <li><a href="#admissions">Book Consultation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Reach Us</h5>
+        <ul>
+          <li>Khanna Road, Krishanpura, Panipat – 132103, Haryana</li>
+          <li><a href="tel:9896356221">98963 56221</a></li>
+          <li><a href="mailto:info@sadanandbvm.edu.in">info@sadanandbvm.edu.in (placeholder)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sadanand Bal Vidya Mandir Sr. Sec. School. All rights reserved.</span>
+      <span>Krishanpura, Panipat, Haryana</span>
+    </div>
+  </div>
+</footer>
+
+<div class="back-top" id="backTop">↑</div>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click', ()=>{
+      const item = q.parentElement;
+      const ans = item.querySelector('.faq-a');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(el=>{
+        el.classList.remove('open');
+        el.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!wasOpen){
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', ()=> backTop.classList.toggle('show', window.scrollY > 500));
+  backTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+  burger.addEventListener('click', ()=>{
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navLinks.style.cssText += open ? '' : 'position:absolute; top:70px; left:20px; right:20px; background:#fff; flex-direction:column; padding:18px 22px; gap:16px; box-shadow:0 14px 24px -14px rgba(0,0,0,.15); border-radius:14px;';
+  });
+</script>
+
+</body>
+</html>

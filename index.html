@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Array Blocks Education</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #ffffff;
+            color: #303030;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            width: 100%;
+            padding: 25px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eeeeee;
+            background: rgba(255,255,255,0.96);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #303030;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #00ad83;
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a {
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00ad83;
+        }
+
+        .header-btn {
+            padding: 13px 25px;
+            border-radius: 30px;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00b783, #0877f9);
+            box-shadow: 0 8px 20px rgba(0, 140, 190, 0.18);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 650px;
+            padding: 75px 7% 80px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 70px;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(55px, 6vw, 92px);
+            line-height: 0.98;
+            letter-spacing: -4px;
+            max-width: 780px;
+            color: #242424;
+        }
+
+        .hero-content h1 span {
+            color: #00a987;
+        }
+
+        .hero-subtitle {
+            margin-top: 30px;
+            color: #00a987;
+            font-size: 34px;
+            font-weight: bold;
+            letter-spacing: -1px;
+        }
+
+        .hero-text {
+            margin-top: 25px;
+            max-width: 670px;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: 35px;
+        }
+
+        .primary-btn {
+            display: inline-block;
+            padding: 17px 34px;
+            border-radius: 35px;
+            background: linear-gradient(90deg, #00b783, #0878f9);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 12px 28px rgba(0, 145, 180, 0.2);
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 35px rgba(0, 145, 180, 0.28);
+        }
+
+        .secondary-btn {
+            padding: 16px 30px;
+            border: 1px solid #d5e7e3;
+            border-radius: 35px;
+            color: #008d76;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        /* Rating */
+
+        .rating {
+            margin-top: 35px;
+            width: fit-content;
+            padding: 16px 27px;
+            background: #dff7f0;
+            border-radius: 40px;
+            font-family: Arial, sans-serif;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .stars {
+            color: #ffac27;
+            font-size: 21px;
+            letter-spacing: 2px;
+        }
+
+        .rating-text {
+            font-weight: bold;
+            color: #444;
+        }
+
+
+        /* =========================
+           HERO VISUAL
+        ========================= */
+
+        .hero-visual {
+            position: relative;
+            min-height: 480px;
+        }
+
+        .circle {
+            position: absolute;
+            width: 410px;
+            height: 410px;
+            right: 0;
+            top: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dcfff5, #d9ebff);
+        }
+
+        .education-card {
+            position: absolute;
+            width: 330px;
+            padding: 35px;
+            border-radius: 28px;
+            background: white;
+            right: 50px;
+            top: 85px;
+            box-shadow: 0 25px 60px rgba(0, 120, 130, 0.16);
+            border: 1px solid #edf5f3;
+        }
+
+        .school-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #00b583, #0878f9);
+            color: white;
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .education-card h3 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .education-card p {
+            font-family: Arial, sans-serif;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .floating-card {
+            position: absolute;
+            left: 10px;
+            bottom: 30px;
+            background: white;
+            padding: 20px 25px;
+            border-radius: 20px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .floating-card strong {
+            color: #00a982;
+            font-size: 28px;
+            display: block;
+        }
+
+
+        /* =========================
+           SCHOOL SECTION
+        ========================= */
+
+        .schools-section {
+            padding: 90px 7% 110px;
+            background: #f9fcfb;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 55px;
+        }
+
+        .small-title {
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #00a783;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(42px, 5vw, 65px);
+            line-height: 1;
+            letter-spacing: -3px;
+            color: #252525;
+        }
+
+        .section-heading h2 span {
+            color: #008f78;
+        }
+
+        .section-heading p {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            line-height: 1.7;
+            color: #777;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           SCHOOL GRID
+        ========================= */
+
+        .school-grid {
+            max-width: 1250px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .school-card {
+            position: relative;
+            padding: 28px;
+            min-height: 180px;
+            border-radius: 25px;
+            background: white;
+            border: 1px solid #e5efec;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            overflow: hidden;
+            transition: 0.35s;
+        }
+
+        .school-card::before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            right: -40px;
+            bottom: -45px;
+            background: #e6faf5;
+            transition: 0.35s;
+        }
+
+        .school-card:hover {
+            transform: translateY(-7px);
+            border-color: #a8e7d8;
+            box-shadow: 0 20px 45px rgba(0, 130, 120, 0.13);
+        }
+
+        .school-card:hover::before {
+            transform: scale(2.2);
+            background: #dff8f1;
+        }
+
+        .school-number {
+            min-width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00b583, #0879f8);
+            box-shadow: 0 10px 22px rgba(0, 150, 180, 0.18);
+        }
+
+        .school-info {
+            flex: 1;
+        }
+
+        .school-info h3 {
+            font-size: 25px;
+            margin-bottom: 9px;
+            color: #292929;
+        }
+
+        .school-info p {
+            font-family: Arial, sans-serif;
+            color: #858585;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .school-link {
+            position: relative;
+            z-index: 2;
+            min-width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eefaf7;
+            color: #009b7c;
+            font-family: Arial, sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .school-card:hover .school-link {
+            color: white;
+            background: linear-gradient(135deg, #00b783, #0878f9);
+            transform: rotate(-15deg);
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            padding: 100px 7%;
+            background: white;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature {
+            padding: 35px;
+            border-radius: 25px;
+            background: #f8fcfb;
+            border: 1px solid #e8f1ef;
+        }
+
+        .feature-icon {
+            font-size: 35px;
+            margin-bottom: 22px;
+        }
+
+        .feature h3 {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .feature p {
+            font-family: Arial, sans-serif;
+            color: #777;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            margin: 40px 7% 90px;
+            padding: 70px;
+            border-radius: 35px;
+            background: linear-gradient(120deg, #00ad83, #0879f5);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cta::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.09);
+            right: -80px;
+            top: -120px;
+        }
+
+        .cta h2 {
+            font-size: clamp(35px, 4vw, 55px);
+            line-height: 1;
+            letter-spacing: -2px;
+            max-width: 700px;
+        }
+
+        .cta p {
+            margin-top: 18px;
+            font-family: Arial, sans-serif;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            position: relative;
+            z-index: 2;
+            white-space: nowrap;
+            padding: 17px 32px;
+            border-radius: 35px;
+            background: white;
+            color: #008f78;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 35px 7%;
+            border-top: 1px solid #eeeeee;
+            display: flex;
+            justify-content: space-between;
+            font-family: Arial, sans-serif;
+            color: #777;
+            font-size: 14px;
+        }
+
+        footer strong {
+            color: #00a17f;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 55px;
+            }
+
+            .hero-visual {
+                min-height: 430px;
+            }
+
+            .school-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 50px 35px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 20px 5%;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .header-btn {
+                padding: 10px 17px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 55px 5%;
+            }
+
+            .hero-content h1 {
+                font-size: 53px;
+                letter-spacing: -2px;
+            }
+
+            .hero-subtitle {
+                font-size: 27px;
+            }
+
+            .hero-text {
+                font-size: 17px;
+            }
+
+            .circle {
+                width: 300px;
+                height: 300px;
+                right: 10px;
+            }
+
+            .education-card {
+                width: 270px;
+                right: 20px;
+                top: 75px;
+            }
+
+            .floating-card {
+                left: 0;
+            }
+
+            .schools-section {
+                padding: 70px 5%;
+            }
+
+            .school-card {
+                padding: 22px;
+            }
+
+            .school-info h3 {
+                font-size: 20px;
+            }
+
+            .school-number {
+                min-width: 48px;
+                height: 48px;
+            }
+
+            .school-link {
+                min-width: 40px;
+                height: 40px;
+            }
+
+            .features {
+                padding: 70px 5%;
+            }
+
+            .cta {
+                margin: 20px 5% 60px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="logo">
+            Array<span>Blocks</span>
+        </div>
+
+        <nav>
+            <a href="#schools">Schools</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <a href="#schools" class="header-btn">
+            Explore Schools
+        </a>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Discover The
+                <span>Right School</span>
+                For Every Child
+            </h1>
+
+            <div class="hero-subtitle">
+                Education Made Simple
+            </div>
+
+            <p class="hero-text">
+                Explore trusted schools, compare educational
+                opportunities and find the perfect learning
+                environment for your child's future.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#schools" class="primary-btn">
+                    Explore Schools →
+                </a>
+
+                <a href="#about" class="secondary-btn">
+                    Learn More
+                </a>
+            </div>
+
+            <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">
+                    4.9/5 Rating • 120+ Reviews
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="circle"></div>
+
+            <div class="education-card">
+
+                <div class="school-icon">
+                    🎓
+                </div>
+
+                <h3>
+                    Quality Education
+                </h3>
+
+                <p>
+                    Connect with leading schools and
+                    discover better opportunities for
+                    students and families.
+                </p>
+
+            </div>
+
+            <div class="floating-card">
+                <strong>10+</strong>
+                Featured Schools
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCHOOL SECTION -->
+    <section class="schools-section" id="schools">
+
+        <div class="section-heading">
+
+            <div class="small-title">
+                Explore Education
+            </div>
+
+            <h2>
+                Choose Your
+                <span>School</span>
+            </h2>
+
+            <p>
+                Select a school below to explore its programs,
+                facilities, admissions and educational journey.
+            </p>
+
+        </div>
+
+
+        <div class="school-grid">
+
+
+            <!-- SCHOOL 01 -->
+            <a href="schools/Mothersparadiseschool.html" class="school-card">
+
+                <div class="school-number">
+                    01
+                </div>
+
+                <div class="school-info">
+                    <h3>Mothers Paradise School</h3>
+                    <p>
+                        Excellence in learning, creativity
+                        and character development.
+                    </p>
+                </div>
+
+                <div class="school-link">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SCHOOL 02 -->
+            <a href="schools/LSBTSchool.html" class="school-card">
+
+                <div class="school-number">
+                    02
+                </div>
+
+                <div class="school-info">
+                    <h3>LSBT School</h3>
+                    <p>
+                        Building confident learners for
+                        a brighter tomorrow.
+                    </p>
+                </div>
+
+                <div class="school-link">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SCHOOL 03 -->
+            <a href="schools/Victor-Public-School.html" class="school-card">
+
+                <div class="school-number">
+                    03
+                </div>
+
+                <div class="school-info">
+                    <h3>Victor Public School</h3>
+                    <p>
+                        Inspiring young minds through
+                        modern education.
+                    </p>
+                </div>
+
+                <div class="school-link">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SCHOOL 04 -->
+            <a href="schools/Bal-Niketan-Public-School.html" class="school-card">
+
+                <div class="school-number">
+                    04
+                </div>
+
+                <div class="school-info">
+                    <h3>Bal Niketan Public School</h3>
+                    <p>
+                        Discover knowledge, innovation
+                        and lifelong learning.
+                    </p>
+                </div>
+
+                <div class="school-link">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SCHOOL 05 -->
+            <a href="schools/National-Senior-Secondary-School.html" class="school-card">
+
+                <div class="school-number">
+                    05
+                </div>
+
+                <div class="school-info">
+                    <h3>National Senior Secondary School</h3>
+                    <p>
+                        A supportive environment for
+                        every learner.
+                    </p>
+                </div>
+
+                <div class="school-link">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SCHOOL 06 -->
+            <a href="schools/Sadanand-Bal-Vidya-Mandir-Sr-Sec-School.html" class="school-card">
+
+                <div class="school-number">
+                    06
+                </div>
+
+                <div class="school-info">
+                    <h3>Sadanand Bal Vidya Mandir Sr. Sec. School</h3>
+                    <p>
+                        Growing curious minds through
+                        meaningful education.
+                    </p>
+                </div>
+
+                <div class="school-link">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SCHOOL 07 -->
+            <a href="schools/Umang_Public_School.html" class="school-card">
+
+                <div class="school-number">
+                    07
+                </div>
+
+                <div class="school-info">
+                    <h3>Umang Public School</h3>
+                    <p>
+                        Empowering students to achieve
+                        their highest potential.
+                    </p>
+                </div>
+
+                <div class="school-link">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SCHOOL 08 -->
+            <a href="schools/Little-Angel-Senior-Secondary-School.html" class="school-card">
+
+                <div class="school-number">
+                    08
+                </div>
+
+                <div class="school-info">
+                    <h3>Little Angel Senior Secondary School</h3>
+                    <p>
+                        Education focused on skills,
+                        values and future success.
+                    </p>
+                </div>
+
+                <div class="school-link">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SCHOOL 09 -->
+            <!-- <a href="#" class="school-card">
+
+                <div class="school-number">
+                    09
+                </div>
+
+                <div class="school-info">
+                    <h3>School Nine</h3>
+                    <p>
+                        Creating opportunities for
+                        academic excellence.
+                    </p>
+                </div>
+
+                <div class="school-link">
+                    →
+                </div>
+
+            </a> -->
+
+
+            <!-- SCHOOL 10 -->
+            <!-- <a href="#" class="school-card">
+
+                <div class="school-number">
+                    10
+                </div>
+
+                <div class="school-info">
+                    <h3>School Ten</h3>
+                    <p>
+                        Where students learn, grow
+                        and achieve.
+                    </p>
+                </div>
+
+                <div class="school-link">
+                    →
+                </div>
+
+            </a> -->
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+
+        <div class="section-heading">
+
+            <div class="small-title">
+                Why Choose Us
+            </div>
+
+            <h2>
+                Everything For A
+                <span>Better Education</span>
+            </h2>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🎓
+                </div>
+
+                <h3>
+                    Quality Schools
+                </h3>
+
+                <p>
+                    Discover schools focused on academic
+                    excellence and overall student growth.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Better Learning
+                </h3>
+
+                <p>
+                    Find educational environments that
+                    encourage curiosity and creativity.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🌱
+                </div>
+
+                <h3>
+                    Future Ready
+                </h3>
+
+                <p>
+                    Help students build the skills,
+                    confidence and values needed for tomorrow.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta" id="about">
+
+        <div>
+
+            <h2>
+                Find A School
+                That Fits Your Future.
+            </h2>
+
+            <p>
+                Explore our featured schools and start
+                your education journey today.
+            </p>
+
+        </div>
+
+        <a href="#schools" class="cta-btn">
+            View All Schools →
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div>
+            © 2026 <strong>ArrayBlocks Education</strong>
+        </div>
+
+        <div>
+            Built for better education.
+        </div>
+
+    </footer>
+
+</body>
+</html>

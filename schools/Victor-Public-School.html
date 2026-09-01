@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victor Public School — Panipat, Haryana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2A3E;
+    --navy-deep:#081A28;
+    --crimson:#B22234;
+    --crimson-light:#D43A3C;
+    --gold:#D4A22A;
+    --gold-light:#E8C46A;
+    --cream:#F9F5EB;
+    --paper:#FFFFFF;
+    --ink:#1C1A17;
+    --ink-soft:#5A5548;
+    --line:#E2DBC8;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    color:var(--navy);
+    margin:0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;border-radius:6px;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+  ::selection{background:var(--gold-light);}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    background:var(--navy-deep);
+    color:#BCC3D4;
+    font-size:13px;
+  }
+  .topbar .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:8px;padding-bottom:8px;
+    flex-wrap:wrap;gap:6px;
+  }
+  .topbar a{color:#E8DBA8;}
+  .topbar-links{display:flex;gap:18px;flex-wrap:wrap;}
+
+  /* ---------- Nav ---------- */
+  header.site-nav{
+    background:var(--navy);
+    position:sticky;top:0;z-index:50;
+    border-bottom:3px solid var(--gold);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:14px;padding-bottom:14px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;color:#fff;}
+  .brand-mark{
+    width:44px;height:44px;border:2px solid var(--gold);
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:700;color:var(--gold);font-size:17px;
+    flex-shrink:0;
+  }
+  .brand-text{line-height:1.2;}
+  .brand-text .name{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#fff;}
+  .brand-text .sub{font-size:11.5px;color:#B0BBD1;letter-spacing:.03em;}
+  .nav-links{display:flex;gap:28px;font-size:14.5px;}
+  .nav-links a{color:#DFE4EE;padding:6px 2px;border-bottom:2px solid transparent;transition:border-color .15s;}
+  .nav-links a:hover{border-color:var(--gold);}
+  .nav-cta{
+    background:var(--gold);color:var(--navy-deep);font-weight:600;font-size:14px;
+    padding:10px 18px;border-radius:var(--radius);white-space:nowrap;
+  }
+  .nav-toggle{display:none;background:none;border:1px solid #3D5270;color:#fff;padding:8px 10px;font-size:20px;border-radius:3px;}
+
+  @media(max-width:860px){
+    .nav-links{
+      position:absolute;top:100%;left:0;right:0;background:var(--navy);
+      flex-direction:column;gap:0;padding:6px 28px 18px;
+      display:none;border-bottom:3px solid var(--gold);
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:12px 0;border-bottom:1px solid #2A3D5A;}
+    .nav-cta{display:none;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(212,162,42,.12), transparent 55%),
+      var(--navy);
+    color:#fff;
+    padding:72px 0 0;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;
+  }
+  .eyebrow-line{
+    display:flex;align-items:center;gap:10px;margin-bottom:22px;color:var(--gold-light);
+    font-size:13.5px;
+  }
+  .eyebrow-line .rule{width:34px;height:1px;background:var(--gold-light);}
+  .hero h1{
+    color:#fff;font-size:44px;line-height:1.12;margin-bottom:20px;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold-light);}
+  .hero p.lead{
+    color:#C9D0E0;font-size:16.5px;max-width:46ch;margin-bottom:32px;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px;}
+  .btn{
+    display:inline-block;padding:13px 24px;border-radius:var(--radius);
+    font-size:14.5px;font-weight:600;border:1px solid transparent;
+  }
+  .btn-gold{background:var(--gold);color:var(--navy-deep);}
+  .btn-gold:hover{background:var(--gold-light);}
+  .btn-outline{border-color:#4D5A7D;color:#fff;}
+  .btn-outline:hover{border-color:var(--gold-light);color:var(--gold-light);}
+
+  .hero-panel{
+    background:var(--paper);color:var(--ink);border-radius:var(--radius);
+    padding:0 0 26px;box-shadow:0 24px 60px -20px rgba(0,0,0,.5);
+    border-top:4px solid var(--gold);overflow:hidden;
+  }
+  .hero-panel .panel-photo{
+    width:100%;height:190px;object-fit:cover;display:block;
+  }
+  .hero-panel .panel-head, .hero-panel .stat-row{
+    padding-left:26px;padding-right:26px;
+  }
+  .hero-panel .panel-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-bottom:16px;margin-top:20px;border-bottom:1px solid var(--line);padding-bottom:12px;
+  }
+  .hero-panel .panel-head h3{font-size:15px;}
+  .hero-panel .panel-head span{font-size:11.5px;color:var(--ink-soft);}
+  .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;}
+  .stat{border-left:2px solid var(--line);padding-left:12px;}
+  .stat .num{font-family:'Fraunces',serif;font-size:26px;color:var(--crimson);font-weight:600;line-height:1;}
+  .stat .lbl{font-size:12.5px;color:var(--ink-soft);margin-top:5px;}
+
+  .hero-strip{
+    border-top:1px solid rgba(255,255,255,.12);margin-top:56px;padding:18px 0;
+  }
+  .hero-strip .wrap{
+    grid-template-columns:none;display:flex;justify-content:space-between;
+    flex-wrap:wrap;gap:14px;font-size:13px;color:#9FA9C2;
+  }
+  @media(max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero h1{font-size:34px;}
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    margin-bottom:44px;border-bottom:1px solid var(--line);padding-bottom:22px;
+  }
+  .section-head .tag{color:var(--crimson);font-size:13px;font-weight:600;margin-bottom:8px;display:block;}
+  .section-head h2{font-size:32px;}
+  .section-head p{color:var(--ink-soft);max-width:42ch;font-size:14.5px;margin-top:6px;}
+  .alt{background:var(--paper);}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .about-grid p{color:var(--ink-soft);margin-bottom:16px;font-size:15.5px;}
+  .pillars{display:flex;flex-direction:column;gap:0;}
+  .pillar{
+    display:grid;grid-template-columns:44px 1fr;gap:16px;
+    padding:18px 0;border-top:1px solid var(--line);
+  }
+  .pillar:last-child{border-bottom:1px solid var(--line);}
+  .pillar .mk{
+    width:40px;height:40px;border:1px solid var(--crimson);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--crimson);
+  }
+  .pillar h4{font-size:16px;margin-bottom:4px;}
+  .pillar p{color:var(--ink-soft);font-size:14px;margin:0;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Toppers ---------- */
+  .topper-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .topper-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 22px;position:relative;
+  }
+  .topper-card .rank{
+    position:absolute;top:-14px;left:22px;background:var(--crimson);color:#fff;
+    font-family:'Fraunces',serif;font-size:13px;width:28px;height:28px;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+  }
+  .avatar-ring{
+    width:64px;height:64px;border-radius:50%;border:2px solid var(--gold);
+    overflow:hidden;margin-bottom:16px;margin-top:8px;background:#F4ECD6;
+  }
+  .avatar-ring img{width:100%;height:100%;object-fit:cover;display:block;}
+  .topper-card h4{font-size:17px;margin-bottom:2px;}
+  .topper-card .stream{color:var(--ink-soft);font-size:13px;margin-bottom:14px;}
+  .topper-card .score{
+    border-top:1px dashed var(--line);padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;
+  }
+  .topper-card .score .pct{font-family:'Fraunces',serif;color:var(--crimson);font-size:22px;font-weight:600;}
+  .topper-card .score .pct-lbl{font-size:11.5px;color:var(--ink-soft);}
+  .topper-note{margin-top:22px;font-size:12.5px;color:var(--ink-soft);border-left:2px solid var(--gold);padding-left:12px;}
+  @media(max-width:860px){.topper-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.topper-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Activities ---------- */
+  .activity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);}
+  .activity-card{background:var(--cream);padding:30px 26px;}
+  .activity-card .mk{color:var(--crimson);margin-bottom:14px;font-size:24px;}
+  .activity-card h4{font-size:16.5px;margin-bottom:8px;}
+  .activity-card p{font-size:14px;color:var(--ink-soft);margin:0;}
+  @media(max-width:860px){.activity-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.activity-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Facilities strip ---------- */
+  .facility-list{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  }
+  .facility-list div{
+    border:1px solid var(--line);background:var(--paper);padding:20px;text-align:center;font-size:14px;color:var(--navy);font-weight:500;
+  }
+  @media(max-width:760px){.facility-list{grid-template-columns:1fr 1fr;}}
+
+  /* ---------- Admissions / Consultation ---------- */
+  .admit-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .steps{list-style:none;margin:0;padding:0;counter-reset:step;}
+  .steps li{
+    counter-increment:step;position:relative;padding:14px 0 14px 46px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-soft);
+  }
+  .steps li:last-child{border-bottom:1px solid var(--line);}
+  .steps li::before{
+    content:counter(step);position:absolute;left:0;top:12px;
+    width:28px;height:28px;border:1px solid var(--crimson);color:var(--crimson);
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-size:13px;
+  }
+  .steps strong{color:var(--navy);display:block;font-size:15px;margin-bottom:2px;font-weight:600;}
+
+  form.consult{
+    background:var(--paper);border:1px solid var(--line);padding:30px;border-top:4px solid var(--crimson);
+  }
+  form.consult h3{font-size:19px;margin-bottom:6px;}
+  form.consult .sub{font-size:13.5px;color:var(--ink-soft);margin-bottom:22px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:12.5px;color:var(--navy);font-weight:600;margin-bottom:6px;}
+  .field input,.field select{
+    width:100%;padding:11px 12px;border:1px solid var(--line);background:#fff;
+    font-family:'Inter',sans-serif;font-size:14px;border-radius:var(--radius);color:var(--ink);
+  }
+  .field input:focus,.field select:focus{outline:2px solid var(--gold);border-color:var(--gold);}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .submit-btn{
+    width:100%;background:var(--crimson);color:#fff;border:none;padding:13px;font-size:14.5px;
+    font-weight:600;border-radius:var(--radius);cursor:pointer;margin-top:6px;
+  }
+  .submit-btn:hover{background:#8A1A1C;}
+  .form-msg{font-size:13px;margin-top:12px;color:var(--crimson);display:none;}
+  @media(max-width:860px){.admit-wrap{grid-template-columns:1fr;}}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:820px;}
+  details{border-bottom:1px solid var(--line);padding:18px 0;}
+  details summary{
+    list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+    font-family:'Fraunces',serif;font-size:16.5px;color:var(--navy);gap:20px;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details summary .plus{font-size:20px;color:var(--crimson);transition:transform .2s;flex-shrink:0;}
+  details[open] summary .plus{transform:rotate(45deg);}
+  details p{color:var(--ink-soft);font-size:14.5px;margin:12px 0 0;max-width:70ch;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border:1px solid var(--line);}
+  .contact-block{background:var(--paper);padding:34px;}
+  .contact-block h4{font-size:14px;color:var(--crimson);margin-bottom:12px;letter-spacing:.02em;}
+  .contact-block .big{font-size:16px;margin-bottom:6px;}
+  .contact-block .big a{border-bottom:1px solid var(--line);}
+  .map-box{
+    background:var(--navy);color:#fff;padding:34px;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .map-box .addr{font-size:15.5px;line-height:1.7;color:#DBE1EE;margin-bottom:20px;}
+  .map-box .maplink{color:var(--gold-light);font-size:13.5px;border-bottom:1px solid var(--gold-light);align-self:flex-start;}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy-deep);color:#A6ADC2;padding:40px 0 26px;font-size:13.5px;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center;}
+  footer a{color:#CDD4E4;}
+  .foot-top{border-bottom:1px solid #223050;padding-bottom:24px;margin-bottom:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+  .foot-top .fname{font-family:'Fraunces',serif;color:#fff;font-size:19px;margin-bottom:6px;}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap;}
+
+  @media(max-width:600px){
+    .wrap{padding:0 20px;}
+    section{padding:60px 0;}
+    .section-head{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-links">
+      <a href="tel:01804000372">📞 0180-400 0372</a>
+      <a href="tel:+919999999999">📱 +91-99999-99999</a>
+    </div>
+    <div class="topbar-links">
+      <span>49, Tehsil Town Rd, Krishna Nagar, Tehsil Camp, Panipat – 132103</span>
+    </div>
+  </div>
+</div>
+
+<header class="site-nav">
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">VP</span>
+      <span class="brand-text">
+        <div class="name">Victor Public School</div>
+        <div class="sub">PANIPAT · HARYANA</div>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#toppers">Toppers 2026</a>
+      <a href="#activities">Activities</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#admissions" class="nav-cta">Book a Consultation</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow-line"><span class="rule"></span> CBSE Curriculum · Nursery to Class XII</div>
+        <h1>Where curiosity meets <em>character</em>, and every child is known.</h1>
+        <p class="lead">Victor Public School in Panipat blends academic rigour with a warm, disciplined environment — preparing students for exams, but more importantly, for life.</p>
+        <div class="hero-actions">
+          <a href="#admissions" class="btn btn-gold">Book a Campus Consultation</a>
+          <a href="tel:01804000372" class="btn btn-outline">Call the School Office</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <img class="panel-photo" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=640&h=380&fit=crop&crop=center&auto=format" alt="Victor Public School campus">
+        <div class="panel-head">
+          <h3>School at a glance</h3>
+          <span>Session 2026–27</span>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><div class="num">CBSE</div><div class="lbl">Board affiliation</div></div>
+          <div class="stat"><div class="num">1:22</div><div class="lbl">Teacher–student ratio</div></div>
+          <div class="stat"><div class="num">N–XII</div><div class="lbl">Nursery to Sr. Secondary</div></div>
+          <div class="stat"><div class="num">97.8%</div><div class="lbl">Top Class XII score, 2026</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <div class="wrap">
+        <span>49, Tehsil Town Rd, Krishna Nagar, Tehsil Camp, Panipat – 132103</span>
+        <span>0180-400 0372</span>
+        <span>+91-99999-99999</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">About the school</span>
+          <h2>Excellence in academics, strength in values.</h2>
+        </div>
+        <p>A CBSE-affiliated school in the heart of Panipat, focused on academics, character and all-round growth from Nursery through Class XII.</p>
+      </div>
+      <div class="about-grid">
+        <div>
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=560&h=320&fit=crop&crop=center&auto=format" alt="Students studying" style="border:1px solid var(--line);margin-bottom:22px;">
+          <p>Victor Public School has been a trusted name in Panipat's education landscape, known for its structured teaching, attentive staff and a campus where every student is encouraged to do their personal best.</p>
+          <p>Our classrooms blend CBSE's academic rigour with project work, regular assessments and one-on-one attention, so students don't just clear exams — they build the habits that carry them through college and beyond.</p>
+          <p>Beyond the classroom, we run a full calendar of sports, cultural events and clubs, because we believe a well-rounded school day is what actually builds confidence.</p>
+        </div>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="mk">A</div>
+            <div><h4>Academic rigour</h4><p>CBSE-aligned teaching with regular tests, doubt-clearing sessions and personal progress tracking.</p></div>
+          </div>
+          <div class="pillar">
+            <div class="mk">B</div>
+            <div><h4>Experienced faculty</h4><p>A qualified, long-tenured teaching staff invested in each student's growth, not just the syllabus.</p></div>
+          </div>
+          <div class="pillar">
+            <div class="mk">C</div>
+            <div><h4>Safe, disciplined campus</h4><p>Clear conduct standards, CCTV-monitored premises and close home–school communication.</p></div>
+          </div>
+          <div class="pillar">
+            <div class="mk">D</div>
+            <div><h4>Beyond academics</h4><p>Sports, art, music and student clubs run alongside the academic calendar, not after it.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="toppers" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">Class XII results</span>
+          <h2>Our toppers, 2026 batch.</h2>
+        </div>
+        <p>Four students who led this year's Class XII results across Science and Commerce streams.</p>
+      </div>
+      <div class="topper-grid">
+        <div class="topper-card">
+          <div class="rank">1</div>
+          <div class="avatar-ring"><img src="https://i.pravatar.cc/160?img=11" alt="Aarav Sharma"></div>
+          <h4>Aarav Sharma</h4>
+          <div class="stream">Class XII · Science (PCM)</div>
+          <div class="score"><span class="pct">97.8%</span><span class="pct-lbl">aggregate</span></div>
+        </div>
+        <div class="topper-card">
+          <div class="rank">2</div>
+          <div class="avatar-ring"><img src="https://i.pravatar.cc/160?img=25" alt="Ishita Malik"></div>
+          <h4>Ishita Malik</h4>
+          <div class="stream">Class XII · Commerce</div>
+          <div class="score"><span class="pct">96.9%</span><span class="pct-lbl">aggregate</span></div>
+        </div>
+        <div class="topper-card">
+          <div class="rank">3</div>
+          <div class="avatar-ring"><img src="https://i.pravatar.cc/160?img=33" alt="Kunal Verma"></div>
+          <h4>Kunal Verma</h4>
+          <div class="stream">Class XII · Science (PCB)</div>
+          <div class="score"><span class="pct">96.4%</span><span class="pct-lbl">aggregate</span></div>
+        </div>
+        <div class="topper-card">
+          <div class="rank">4</div>
+          <div class="avatar-ring"><img src="https://i.pravatar.cc/160?img=45" alt="Simran Kaur"></div>
+          <h4>Simran Kaur</h4>
+          <div class="stream">Class XII · Commerce</div>
+          <div class="score"><span class="pct">95.8%</span><span class="pct-lbl">aggregate</span></div>
+        </div>
+      </div>
+      <p class="topper-note">Names, photos and scores above are placeholders — swap in your actual 2026 Class XII toppers, their real photos and CBSE result percentages before publishing.</p>
+    </div>
+  </section>
+
+  <section id="activities">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">Campus life</span>
+          <h2>A full school day, not just a full syllabus.</h2>
+        </div>
+        <p>Regular activities that run through the school year alongside academics.</p>
+      </div>
+      <div class="activity-grid">
+        <div class="activity-card">
+          <div class="mk">⚽</div>
+          <h4>Sports &amp; athletics</h4>
+          <p>Cricket, football, kabaddi, athletics and annual sports day competitions across age groups.</p>
+        </div>
+        <div class="activity-card">
+          <div class="mk">🎭</div>
+          <h4>Arts &amp; culture</h4>
+          <p>Dance, drama, music and the annual cultural fest, with inter-house and inter-school events.</p>
+        </div>
+        <div class="activity-card">
+          <div class="mk">🔬</div>
+          <h4>Science &amp; STEM club</h4>
+          <p>Science exhibitions, model-making, coding sessions and participation in inter-school olympiads.</p>
+        </div>
+        <div class="activity-card">
+          <div class="mk">📚</div>
+          <h4>Literary &amp; debate society</h4>
+          <p>Elocution, debate, quiz and creative writing competitions building confident communicators.</p>
+        </div>
+        <div class="activity-card">
+          <div class="mk">🤝</div>
+          <h4>NCC &amp; community service</h4>
+          <p>Discipline and civic sense through NCC, cleanliness drives and local community initiatives.</p>
+        </div>
+        <div class="activity-card">
+          <div class="mk">🎨</div>
+          <h4>Art, craft &amp; exhibitions</h4>
+          <p>Regular art and craft workshops with student work displayed at the annual school exhibition.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">On campus</span>
+          <h2>Facilities</h2>
+        </div>
+        <p>What the campus offers day to day.</p>
+      </div>
+      <div class="facility-list">
+        <div>Smart / digital classrooms</div>
+        <div>Science &amp; computer labs</div>
+        <div>Library &amp; reading room</div>
+        <div>Sports ground</div>
+        <div>Indoor games room</div>
+        <div>Music &amp; art room</div>
+        <div>Medical / first-aid room</div>
+        <div>CCTV-monitored campus</div>
+        <div>Transport facility</div>
+        <div>Clean drinking water (RO)</div>
+        <div>Auditorium / activity hall</div>
+        <div>Canteen</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="admissions">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">Admissions</span>
+          <h2>Book a consultation with us.</h2>
+        </div>
+        <p>Talk to our admissions team about the right class, fee structure and seat availability for your child.</p>
+      </div>
+      <div class="admit-wrap">
+        <div>
+          <ul class="steps">
+            <li><strong>Book a slot</strong>Fill the form, or call the school office directly to fix a convenient time.</li>
+            <li><strong>Campus visit</strong>Tour the classrooms, labs and sports facilities, and meet the class teacher.</li>
+            <li><strong>Document check</strong>Bring the child's birth certificate, previous school records and address proof.</li>
+            <li><strong>Seat confirmation</strong>Confirm the seat after the consultation, subject to availability in that class.</li>
+          </ul>
+        </div>
+        <form class="consult" id="consultForm">
+          <h3>Request a consultation</h3>
+          <p class="sub">Our admissions desk will call you back within one working day.</p>
+          <div class="field">
+            <label for="pname">Parent / guardian name</label>
+            <input id="pname" type="text" placeholder="Enter full name" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input id="phone" type="tel" placeholder="10-digit mobile" required>
+            </div>
+            <div class="field">
+              <label for="cclass">Class applying for</label>
+              <select id="cclass" required>
+                <option value="">Select class</option>
+                <option>Nursery</option>
+                <option>KG</option>
+                <option>Class I – V</option>
+                <option>Class VI – VIII</option>
+                <option>Class IX – X</option>
+                <option>Class XI – XII</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="pref">Preferred visit day/time</label>
+            <input id="pref" type="text" placeholder="e.g. Saturday morning">
+          </div>
+          <button type="submit" class="submit-btn">Request callback</button>
+          <div class="form-msg" id="formMsg">Thank you — the admissions desk will call you back shortly. You can also reach us directly at 0180-400 0372.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">Common questions</span>
+          <h2>FAQ</h2>
+        </div>
+        <p>Answers to what parents usually ask before joining.</p>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>Which board is the school affiliated to?<span class="plus">+</span></summary>
+          <p>Victor Public School follows the CBSE curriculum from Nursery through Class XII. Please confirm the current CBSE affiliation number with the school office for official records.</p>
+        </details>
+        <details>
+          <summary>What classes and streams are offered?<span class="plus">+</span></summary>
+          <p>We offer Nursery to Class XII, with Science, Commerce and Humanities streams available at the senior secondary level.</p>
+        </details>
+        <details>
+          <summary>How do I apply for admission?<span class="plus">+</span></summary>
+          <p>Call the school office or book a consultation through this website. Our admissions desk will schedule a campus visit and share the fee structure and required documents.</p>
+        </details>
+        <details>
+          <summary>What documents are needed for admission?<span class="plus">+</span></summary>
+          <p>Typically the child's birth certificate, previous school's transfer certificate and report card, address proof, and passport-size photographs. Exact requirements are confirmed at the consultation.</p>
+        </details>
+        <details>
+          <summary>Is transport available?<span class="plus">+</span></summary>
+          <p>Yes, school transport is available on select routes around Panipat. Ask the admissions desk to confirm whether your area is covered.</p>
+        </details>
+        <details>
+          <summary>What is the school's contact number for queries?<span class="plus">+</span></summary>
+          <p>You can reach the school office at 0180-400 0372 or +91-99999-99999.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">Get in touch</span>
+          <h2>Visit or contact the school</h2>
+        </div>
+        <p>We're open to walk-ins during school hours; calling ahead helps us plan your visit.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-block">
+          <h4>PHONE</h4>
+          <div class="big"><a href="tel:01804000372">0180-400 0372</a></div>
+          <div class="big"><a href="tel:+919999999999">+91-99999-99999</a></div>
+        </div>
+        <div class="contact-block">
+          <h4>OFFICE HOURS</h4>
+          <div class="big">Monday – Saturday</div>
+          <div class="big">8:00 AM – 2:30 PM</div>
+          <h4 style="margin-top:22px;">EMAIL</h4>
+          <div class="big"><a href="mailto:info@victorpublicschool.example">info@victorpublicschool.example</a></div>
+        </div>
+        <div class="map-box" style="grid-column:1 / -1;">
+          <div>
+            <h4 style="color:var(--gold-light);">ADDRESS</h4>
+            <div class="addr">Victor Public School<br>49, Tehsil Town Rd, Krishna Nagar,<br>Tehsil Camp, Panipat, Haryana – 132103</div>
+          </div>
+          <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=49+Tehsil+Town+Rd+Krishna+Nagar+Panipat+Haryana+132103" target="_blank" rel="noopener">Open location in Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-top">
+    <div>
+      <div class="fname">Victor Public School</div>
+      <div>49, Tehsil Town Rd, Krishna Nagar, Tehsil Camp, Panipat – 132103</div>
+    </div>
+    <div class="foot-links">
+      <a href="#about">About</a>
+      <a href="#toppers">Toppers</a>
+      <a href="#activities">Activities</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <span>© 2026 Victor Public School. All rights reserved.</span>
+    <span>Affiliated to CBSE, New Delhi</span>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const form = document.getElementById('consultForm');
+  const msg = document.getElementById('formMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    msg.style.display = 'block';
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
